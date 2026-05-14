@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ФОРУМ 360 — Реализация тендеров по 44-ФЗ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <aside class="sidebar" aria-label="Бренд">
+        <div class="sidebar-inner">
+            <span class="sidebar-brand">ФОРУМ 360</span>
+        </div>
+    </aside>
+
+    <header class="site-header">
+        <a class="logo-link" href="#hero" aria-label="На главную">
+            <img src="assets/logo.svg" alt="ФОРУМ 360" class="logo-img" width="240" height="52" decoding="async">
+        </a>
+        <nav class="site-nav" aria-label="Основная навигация">
+            <a href="#hero">Главная</a>
+            <a href="#about">О компании</a>
+            <a href="#team">Команда</a>
+            <a href="#cases">Кейсы</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+        <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav-menu" aria-label="Открыть меню"></button>
+    </header>
+
+    <div class="nav-drawer" id="site-nav-menu">
+        <nav class="site-nav site-nav--drawer" aria-label="Мобильное меню">
+            <a href="#hero">Главная</a>
+            <a href="#about">О компании</a>
+            <a href="#team">Команда</a>
+            <a href="#cases">Кейсы</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+    </div>
+
+    <main class="main">
+        <section class="hero" id="hero" aria-labelledby="hero-title">
+            <div class="hero-bg-fz" aria-hidden="true">ФЗ-44</div>
+            <div class="hero-grid-meta mono" aria-hidden="true">
+                <span>DATA_NODE_44.0</span>
+                <span>CONNECTED</span>
+                <span>RF_SCOPE: FULL</span>
+            </div>
+            <div class="hero-content">
+                <p class="hero-kicker mono">Тендерное сопровождение и реализация</p>
+                <h1 class="hero-title" id="hero-title">Реализуем тендеры по всей стране в рамках <span class="accent">ФЗ-44</span></h1>
+                <p class="hero-lead">Полный цикл: от подбора тендера до сдачи отчётности по контракту.</p>
+                <div class="hero-cta">
+                    <a href="#cases" class="btn btn--primary">Перейти к кейсам</a>
+                    <a href="#contacts" class="btn btn--outline">Связаться с нами</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section about" id="about" aria-labelledby="about-title">
+            <div class="section-head">
+                <span class="section-num mono">01</span>
+                <h2 class="section-title" id="about-title">О компании</h2>
+            </div>
+            <div class="about-panel">
+                <p class="about-meta mono">// MODULE.ABOUT — PUBLIC_PROFILE</p>
+                <div class="about-text">
+                    <p>ФОРУМ 360 — команда специалистов в сфере тендерного сопровождения и реализации мероприятий по всей России.</p>
+                    <p>Руководители компании — специалисты с многолетним опытом работы в государственных и коммерческих проектах: от участия в тендерах и подготовки документации до полной реализации контрактов и сдачи отчётности.</p>
+                    <p>Объединив разносторонний практический опыт, мы создали ФОРУМ 360, чтобы давать Заказчикам максимум в рамках исполнения контрактов — с вниманием к деталям, срокам и результату.</p>
+                    <p class="about-principle">Многие компании говорят о принципах. У нас он один — делать свою работу качественно, ответственно и в срок.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section team-section" id="team" aria-labelledby="team-title">
+            <div class="section-head">
+                <span class="section-num mono">02</span>
+                <h2 class="section-title" id="team-title">Руководящий состав</h2>
+            </div>
+            <p class="team-tagline">Те, кто держит качество — и умеет иногда вовремя перезагрузиться.</p>
+            <p class="section-sub mono">Наведите на сектор круга — краткая информация и опыт в цифрах</p>
+            <div class="team-wrapper">
+                <div class="circle-container" id="teamCircle">
+                    <img class="team-img" src="assets/team-circle.svg" alt="Команда ФОРУМ 360: четыре руководителя">
+                    <div class="hitbox hb-tl" data-member="ekaterina" role="presentation" aria-hidden="true"></div>
+                    <div class="hitbox hb-tr" data-member="marina" role="presentation" aria-hidden="true"></div>
+                    <div class="hitbox hb-bl" data-member="lyubov" role="presentation" aria-hidden="true"></div>
+                    <div class="hitbox hb-br" data-member="anastasia" role="presentation" aria-hidden="true"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section cases-section" id="cases" aria-labelledby="cases-title">
+            <div class="section-head section-head--row">
+                <div>
+                    <span class="section-num mono">03</span>
+                    <h2 class="section-title" id="cases-title">Кейсы и портфолио</h2>
+                </div>
+                <a href="#cases" class="cases-all-link mono">Все проекты</a>
+            </div>
+
+            <div class="cases-table" role="table" aria-label="Реализованные контракты">
+                <div class="cases-row cases-row--head mono" role="row">
+                    <span role="columnheader">#</span>
+                    <span role="columnheader">Проект</span>
+                    <span role="columnheader">Локация / заказчик</span>
+                    <span role="columnheader">ЕИС</span>
+                </div>
+                <div class="cases-row cases-row--data" role="button" tabindex="0" data-case="seminars4">
+                    <span class="mono" role="cell">01</span>
+                    <span role="cell"><strong>Семинары 4</strong><span class="cases-sub">Комплекс услуг по четырём семинарам</span></span>
+                    <span role="cell" class="cases-loc">Калмыкия, Дагестан, Липецкая и Брянская области · ФГБНУ «Институт изучения детства…»</span>
+                    <span role="cell"><a class="eis-link" href="https://zakupki.gov.ru/epz/order/notice/zk20/view/common-info.html?regNumber=0373100134325000034" target="_blank" rel="noopener noreferrer">ЕИС</a></span>
+                </div>
+                <div class="cases-row cases-row--data" role="button" tabindex="0" data-case="seminars2">
+                    <span class="mono" role="cell">02</span>
+                    <span role="cell"><strong>Семинары 2</strong><span class="cases-sub">Комплекс услуг по двум семинарам</span></span>
+                    <span role="cell" class="cases-loc">Владикавказ, Владимир · ФГБНУ «Институт изучения детства…»</span>
+                    <span role="cell"><a class="eis-link" href="https://zakupki.gov.ru/epz/order/notice/zk20/view/common-info.html?regNumber=0373100134325000036" target="_blank" rel="noopener noreferrer">ЕИС</a></span>
+                </div>
+                <div class="cases-row cases-row--data" role="button" tabindex="0" data-case="tourism">
+                    <span class="mono" role="cell">03</span>
+                    <span role="cell"><strong>Туризм</strong><span class="cases-sub">Заседание коллегии Госкомтуризма РТ</span></span>
+                    <span role="cell" class="cases-loc">Казань · Госкомитет РТ по туризму</span>
+                    <span role="cell"><a class="eis-link" href="https://zakupki.gov.ru/epz/order/notice/ea20/view/common-info.html?regNumber=0111200000925000703" target="_blank" rel="noopener noreferrer">ЕИС</a></span>
+                </div>
+                <div class="cases-row cases-row--data" role="button" tabindex="0" data-case="molodoy">
+                    <span class="mono" role="cell">04</span>
+                    <span role="cell"><strong>Молодой город</strong><span class="cases-sub">Организация программы форума</span></span>
+                    <span role="cell" class="cases-loc">Калуга · ГБУ КО «Областной молодёжный центр»</span>
+                    <span role="cell"><a class="eis-link" href="https://zakupki.gov.ru/epz/order/notice/zk20/view/common-info.html?regNumber=0137200001226001762" target="_blank" rel="noopener noreferrer">ЕИС</a></span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+        <div class="footer-main">
+            <div class="footer-col">
+                <h3 class="footer-brand">ФОРУМ 360</h3>
+                <p class="footer-desc">Тендерное сопровождение и реализация мероприятий для государственных заказчиков.</p>
+                <div class="footer-cta">
+                    <a href="mailto:forum.360@yandex.ru" class="btn btn--light">Написать</a>
+                    <a href="tel:+79180868600" class="btn btn--ghost-light">+7 918 086 86 00</a>
+                </div>
+            </div>
+            <div class="footer-col footer-col--mono">
+                <h4 class="mono footer-heading">// SYSTEM.INFO</h4>
+                <p>ООО «Форум 360»</p>
+                <p>ИНН 2310241828</p>
+                <p>350002, Краснодарский край, г. Краснодар, Северная ул., д. 490, помещ. 12/1</p>
+                <p><a href="mailto:forum.360@yandex.ru">forum.360@yandex.ru</a></p>
+            </div>
+            <div class="footer-col footer-deco mono" aria-hidden="true">
+                <div class="footer-chart">
+                    <svg viewBox="0 0 120 60" preserveAspectRatio="none" class="footer-chart-svg">
+                        <path d="M0,45 L20,40 L40,50 L60,25 L80,30 L100,10 L120,15" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.5"/>
+                    </svg>
+                    <span class="footer-chart-cap">METRICS / DELIVERY</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-strip mono">
+            <span class="footer-status"><span class="footer-dot"></span> SYSTEM STATUS: ONLINE</span>
+            <span id="footer-time">UTC+03:00 — …</span>
+            <span>SECURE CONNECTION</span>
+        </div>
+    </footer>
+
+    <div class="tooltip" id="tooltip" role="tooltip">
+        <h3 class="tooltip-name" id="tName">Имя</h3>
+        <span class="tooltip-role mono" id="tRole">Должность</span>
+        <div class="tooltip-body" id="tDesc">Описание</div>
+        <div class="tooltip-stats">
+            <div class="stat-item"><span class="stat-val" id="tStat1">—</span><span class="stat-lab mono">Опыт</span></div>
+            <div class="stat-item"><span class="stat-val" id="tStat2">—</span><span class="stat-lab mono" id="tStat2Lab">Контракты</span></div>
+            <div class="stat-item"><span class="stat-val" id="tStat3">—</span><span class="stat-lab mono" id="tStat3Lab">Сумма / метрика</span></div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-backdrop" data-close-modal></div>
+        <div class="modal-panel">
+            <button type="button" class="modal-close mono" data-close-modal aria-label="Закрыть">×</button>
+            <div class="modal-layout">
+                <div class="modal-visual">
+                    <div class="modal-viewport" id="modalViewport">
+                        <button type="button" class="modal-nav modal-nav--prev" id="galleryPrev" aria-label="Предыдущее фото">‹</button>
+                        <img class="modal-gallery-img" id="modalGalleryImg" src="" alt="">
+                        <button type="button" class="modal-nav modal-nav--next" id="galleryNext" aria-label="Следующее фото">›</button>
+                    </div>
+                    <div class="modal-gallery-toolbar mono">
+                        <span id="modalGalleryCount"></span>
+                        <span class="modal-gallery-hint">← → · свайп</span>
+                    </div>
+                </div>
+                <div class="modal-aside">
+                    <h2 class="modal-title" id="modalTitle">Кейс</h2>
+                    <p class="modal-meta mono" id="modalMeta"></p>
+                    <div class="modal-body" id="modalBody"></div>
+                    <a class="btn btn--primary modal-eis" id="modalEis" href="#" target="_blank" rel="noopener noreferrer">Открыть в ЕИС</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
