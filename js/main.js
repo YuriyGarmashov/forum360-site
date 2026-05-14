@@ -298,6 +298,15 @@
     const galleryFrame = document.getElementById("modalViewport");
 
     const galleryState = { urls: [], index: 0, title: "" };
+    const preloadCache = new Set();
+
+    function preloadImage(url) {
+        if (!url || preloadCache.has(url)) return;
+        preloadCache.add(url);
+        const img = new Image();
+        img.decoding = "async";
+        img.src = url;
+    }
 
     function buildGalleryUrls(caseId) {
         const pack = CASE_PHOTOS[caseId];
@@ -316,9 +325,15 @@
             return;
         }
         galleryState.index = ((galleryState.index % n) + n) % n;
-        galleryImg.src = galleryState.urls[galleryState.index];
+        const url = galleryState.urls[galleryState.index];
+        galleryImg.decoding = "async";
+        galleryImg.loading = "eager";
+        galleryImg.src = url;
         galleryImg.alt = galleryState.title + " — фото " + (galleryState.index + 1) + " из " + n;
         galleryCount.textContent = (galleryState.index + 1) + " / " + n;
+
+        preloadImage(galleryState.urls[(galleryState.index + 1) % n]);
+        preloadImage(galleryState.urls[(galleryState.index - 1 + n) % n]);
     }
 
     function galleryStep(delta) {

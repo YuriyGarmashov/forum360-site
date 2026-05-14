@@ -449,44 +449,6 @@ body::before {
     z-index: 5;
 }
 
-.hitbox::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(109, 12, 50, 0.06);
-    border: 1px solid rgba(109, 12, 50, 0.16);
-    opacity: 0;
-    transform: translate3d(0, 0, 0) scale(1);
-    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-    transition: transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 180ms ease, box-shadow 260ms ease;
-}
-
-.hitbox:hover::before,
-.hitbox:focus-visible::before {
-    opacity: 1;
-    box-shadow: 12px 12px 0 rgba(109, 12, 50, 0.08);
-}
-
-.hb-tl:hover::before,
-.hb-tl:focus-visible::before {
-    transform: translate3d(-6px, -6px, 0) scale(1.02);
-}
-
-.hb-tr:hover::before,
-.hb-tr:focus-visible::before {
-    transform: translate3d(6px, -6px, 0) scale(1.02);
-}
-
-.hb-bl:hover::before,
-.hb-bl:focus-visible::before {
-    transform: translate3d(-6px, 6px, 0) scale(1.02);
-}
-
-.hb-br:hover::before,
-.hb-br:focus-visible::before {
-    transform: translate3d(6px, 6px, 0) scale(1.02);
-}
-
 .hb-tr {
     top: 0;
     right: 0;
@@ -1175,6 +1137,10 @@ body::before {
 }
 
 @media (max-width: 640px) {
+    .hero-grid-meta {
+        display: none;
+    }
+
     .cases-row {
         grid-template-columns: 1fr;
         gap: 0.5rem;
