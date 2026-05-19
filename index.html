@@ -423,6 +423,9 @@
                     Наведите на сектор круга — краткая информация и опыт в
                     цифрах
                 </p>
+                <p class="section-sub section-sub--mobile mono">
+                    Нажмите на сектор круга — карточка закрепится ниже
+                </p>
                 <div class="team-wrapper">
                     <div
                         class="circle-container"
@@ -750,6 +753,79 @@
                         <div id="projectsRows"></div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div
+            class="modal modal--team-member"
+            id="teamMemberModal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="teamMemberTitle"
+        >
+            <div class="modal-backdrop" data-close-team-modal></div>
+            <div class="tmm-panel">
+                <button
+                    type="button"
+                    class="tmm-close"
+                    data-close-team-modal
+                    aria-label="Закрыть"
+                >
+                    ×
+                </button>
+                <header class="tmm-head">
+                    <div class="tmm-head-text">
+                        <h3 class="tmm-name" id="teamMemberTitle">Имя</h3>
+                        <p class="tmm-role mono" id="teamMemberRole">Должность</p>
+                    </div>
+                </header>
+                <div class="tmm-body">
+                    <div class="tmm-desc" id="teamMemberDesc"></div>
+                    <div class="tmm-stats">
+                        <article class="tmm-stat">
+                            <span class="tmm-stat-icon" aria-hidden="true"></span>
+                            <span class="tmm-stat-val" id="teamMemberStat1">—</span>
+                            <span class="tmm-stat-lab mono">Опыт</span>
+                        </article>
+                        <article class="tmm-stat">
+                            <span class="tmm-stat-icon" aria-hidden="true"></span>
+                            <span class="tmm-stat-val" id="teamMemberStat2">—</span>
+                            <span class="tmm-stat-lab mono" id="teamMemberStat2Lab"
+                                >Контракты</span
+                            >
+                        </article>
+                        <article class="tmm-stat">
+                            <span class="tmm-stat-icon" aria-hidden="true"></span>
+                            <span class="tmm-stat-val" id="teamMemberStat3">—</span>
+                            <span class="tmm-stat-lab mono" id="teamMemberStat3Lab"
+                                >Сумма проектов</span
+                            >
+                        </article>
+                    </div>
+                </div>
+                <footer class="tmm-foot">
+                    <div class="tmm-nav">
+                        <button
+                            type="button"
+                            class="tmm-nav-btn"
+                            id="teamMemberPrev"
+                            aria-label="Предыдущий участник"
+                        >
+                            ‹
+                        </button>
+                        <button
+                            type="button"
+                            class="tmm-nav-btn"
+                            id="teamMemberNext"
+                            aria-label="Следующий участник"
+                        >
+                            ›
+                        </button>
+                    </div>
+                    <button type="button" class="tmm-cta mono" id="teamMemberMoreBtn">
+                        Подробнее об опыте
+                    </button>
+                </footer>
             </div>
         </div>
 

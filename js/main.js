@@ -162,6 +162,7 @@
     ekaterina: {
       name: "Екатерина Алмаз",
       role: "Исполнительный директор",
+      photo: "Элементы круга/png/1_ekaterina.png",
       desc: "Следит за всеми глобальными процессами компании, обеспечивает финансирование проектов, порой не спит ночами, чтобы Заказчик был доволен проектом.",
       s1: "6 лет",
       s2: "56",
@@ -184,6 +185,7 @@
     marina: {
       name: "Марина Плеханова",
       role: "Руководитель тендерного отдела",
+      photo: "Элементы круга/png/2_marina.png",
       desc:
         "Мы называем её «счастливой рукой» нашей команды.\n\n" +
         "Увидела, просчитала, выиграла — это точно про Марину.\n\n" +
@@ -200,6 +202,7 @@
     lyubov: {
       name: "Любовь Пасека",
       role: "Руководитель отдела реализации / дизайнер",
+      photo: "Элементы круга/png/3_lubov.png",
       desc: "Сделать макеты за сутки — она готова; найти подход к любому Заказчику — это про неё; творческая изюминка нашей команды.",
       s1: "2 года",
       s2: "800–1000",
@@ -225,6 +228,7 @@
     anastasia: {
       name: "Анастасия Гармашова",
       role: "Руководитель проектного отдела",
+      photo: "Элементы круга/png/4_anastasya.png",
       desc:
         "Контролирует самое важное — сроки и отчётность.\n\n" +
         "Структура во всём — её главный козырь, поэтому проекты реализуются чётко, как часы.\n\n" +
@@ -277,6 +281,7 @@
   const ts3Lab = document.getElementById("tStat3Lab");
   const tooltipMoreBtn = document.getElementById("tooltipMoreBtn");
   let tooltipDetailOpen = false;
+  const memberOrder = ["ekaterina", "marina", "anastasia", "lyubov"];
 
   function descToHtml(text) {
     return text
@@ -387,6 +392,9 @@
   let activeQuarterEl = null;
   let teamLeaveTimer = null;
   let tooltipFreezeCloseUntil = 0;
+  let isTouchTeamMode = false;
+  let activeTeamModalMember = null;
+  let teamModalDetailOpen = false;
   const tooltipPositionClasses = [
     "tooltip--pos-ekaterina",
     "tooltip--pos-marina",
@@ -469,7 +477,24 @@
     hoverMemberKey = key;
     quarter.classList.add("is-hover");
     teamCircle.classList.add("is-active");
-    showMemberTooltip(key);
+    if (isTouchTeamMode) {
+      if (tooltip) {
+        tooltip.classList.remove("is-active", ...tooltipPositionClasses);
+      }
+      collapseTooltipMore();
+      openTeamMemberModal(key);
+    } else {
+      showMemberTooltip(key);
+      document.body.classList.remove("team-touch-tooltip-open");
+    }
+  }
+
+  function updateTeamInteractionMode() {
+    isTouchTeamMode = window.matchMedia("(max-width: 880px)").matches;
+    if (!isTouchTeamMode) {
+      document.body.classList.remove("team-touch-tooltip-open");
+      closeTeamMemberModal();
+    }
   }
 
   function clearMemberTooltip() {
@@ -487,6 +512,83 @@
       // Next hover resets position classes in showMemberTooltip().
       tooltip.classList.remove("is-active");
     }
+    document.body.classList.remove("team-touch-tooltip-open");
+  }
+
+  const teamMemberModal = document.getElementById("teamMemberModal");
+  const teamMemberTitle = document.getElementById("teamMemberTitle");
+  const teamMemberRole = document.getElementById("teamMemberRole");
+  const teamMemberDesc = document.getElementById("teamMemberDesc");
+  const teamMemberStat1 = document.getElementById("teamMemberStat1");
+  const teamMemberStat2 = document.getElementById("teamMemberStat2");
+  const teamMemberStat3 = document.getElementById("teamMemberStat3");
+  const teamMemberStat2Lab = document.getElementById("teamMemberStat2Lab");
+  const teamMemberStat3Lab = document.getElementById("teamMemberStat3Lab");
+  const teamMemberAvatar = document.getElementById("teamMemberAvatar");
+  const teamMemberPrev = document.getElementById("teamMemberPrev");
+  const teamMemberNext = document.getElementById("teamMemberNext");
+  const teamMemberMoreBtn = document.getElementById("teamMemberMoreBtn");
+
+  function renderTeamMemberModal(key) {
+    const data = members[key];
+    if (!data || !teamMemberModal) return;
+    activeTeamModalMember = key;
+    teamMemberModal.dataset.member = key;
+    teamMemberTitle.textContent = data.name;
+    teamMemberRole.textContent = data.role;
+    teamMemberStat1.textContent = data.s1;
+    teamMemberStat2.textContent = data.s2;
+    teamMemberStat3.textContent = data.s3;
+    teamMemberStat2Lab.textContent = data.s2Lab || "Показатель";
+    teamMemberStat3Lab.textContent = data.s3Lab || "Показатель";
+    if (teamMemberAvatar) {
+      teamMemberAvatar.src = data.photo || "";
+      teamMemberAvatar.alt = data.name || "";
+    }
+    if (teamModalDetailOpen) {
+      teamMemberDesc.innerHTML = experienceToHtml(data.experience || "");
+      teamMemberModal.classList.add("tooltip--expanded");
+      teamMemberMoreBtn.textContent = "Краткое описание";
+      teamMemberMoreBtn.setAttribute("aria-expanded", "true");
+    } else {
+      teamMemberDesc.innerHTML = descToHtml(data.desc || "");
+      teamMemberModal.classList.remove("tooltip--expanded");
+      teamMemberMoreBtn.textContent = "Подробнее об опыте";
+      teamMemberMoreBtn.setAttribute("aria-expanded", "false");
+    }
+  }
+
+  function openTeamMemberModal(key) {
+    if (!teamMemberModal) return;
+    teamModalDetailOpen = false;
+    renderTeamMemberModal(key);
+    teamMemberModal.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeTeamMemberModal() {
+    if (!teamMemberModal) return;
+    teamMemberModal.classList.remove("is-open");
+    activeTeamModalMember = null;
+    teamModalDetailOpen = false;
+    if (teamMemberAvatar) {
+      teamMemberAvatar.removeAttribute("src");
+      teamMemberAvatar.alt = "";
+    }
+    if (
+      !modal.classList.contains("is-open") &&
+      !(projectsModal && projectsModal.classList.contains("is-open"))
+    ) {
+      document.body.style.overflow = "";
+    }
+  }
+
+  function switchTeamModalMember(delta) {
+    if (!activeTeamModalMember) return;
+    const current = memberOrder.indexOf(activeTeamModalMember);
+    if (current < 0) return;
+    const next = (current + delta + memberOrder.length) % memberOrder.length;
+    renderTeamMemberModal(memberOrder[next]);
   }
 
   const hitPaths = teamCircle
@@ -506,20 +608,36 @@
     }
 
     hitPath.addEventListener("pointerenter", function () {
+      if (isTouchTeamMode) return;
       activateMember(key);
     });
 
     hitPath.addEventListener("focus", function () {
+      if (isTouchTeamMode) return;
       activateMember(key);
     });
 
     hitPath.addEventListener("pointerleave", function () {
+      if (isTouchTeamMode) return;
       if (hoverMemberKey === key && document.activeElement !== hitPath) {
         scheduleTeamLeave();
       }
     });
 
+    hitPath.addEventListener("click", function (e) {
+      if (!isTouchTeamMode) return;
+      e.preventDefault();
+      e.stopPropagation();
+      if (hoverMemberKey === key) {
+        clearMemberTooltip();
+        closeTeamMemberModal();
+        return;
+      }
+      activateMember(key);
+    });
+
     hitPath.addEventListener("blur", function () {
+      if (isTouchTeamMode) return;
       if (hoverMemberKey === key) clearMemberTooltip();
     });
 
@@ -536,13 +654,39 @@
   });
 
   if (teamCircle) {
-    teamCircle.addEventListener("pointerleave", scheduleTeamLeave);
+    teamCircle.addEventListener("pointerleave", function () {
+      if (isTouchTeamMode) return;
+      scheduleTeamLeave();
+    });
   }
 
   if (tooltip) {
-    tooltip.addEventListener("pointerenter", cancelTeamLeaveSchedule);
-    tooltip.addEventListener("pointerleave", scheduleTeamLeave);
+    tooltip.addEventListener("pointerenter", function () {
+      if (isTouchTeamMode) return;
+      cancelTeamLeaveSchedule();
+    });
+    tooltip.addEventListener("pointerleave", function () {
+      if (isTouchTeamMode) return;
+      scheduleTeamLeave();
+    });
   }
+
+  document.addEventListener("click", function (e) {
+    if (!isTouchTeamMode || !tooltip || !teamCircle) return;
+    const insideTooltip = tooltip.contains(e.target);
+    const insideCircle = teamCircle.contains(e.target);
+    if (!insideTooltip && !insideCircle) {
+      clearMemberTooltip();
+    }
+  });
+
+  window.addEventListener("resize", function () {
+    updateTeamInteractionMode();
+    if (!isTouchTeamMode) {
+      clearMemberTooltip();
+    }
+  });
+  updateTeamInteractionMode();
 
   if (tooltipMoreBtn && tooltip) {
     tooltipMoreBtn.addEventListener("click", function (e) {
@@ -570,6 +714,29 @@
         tDesc.innerHTML = descToHtml(data.desc || "");
       }
 
+    });
+  }
+
+  if (teamMemberPrev) {
+    teamMemberPrev.addEventListener("click", function (e) {
+      e.preventDefault();
+      switchTeamModalMember(-1);
+    });
+  }
+
+  if (teamMemberNext) {
+    teamMemberNext.addEventListener("click", function (e) {
+      e.preventDefault();
+      switchTeamModalMember(1);
+    });
+  }
+
+  if (teamMemberMoreBtn) {
+    teamMemberMoreBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (!activeTeamModalMember) return;
+      teamModalDetailOpen = !teamModalDetailOpen;
+      renderTeamMemberModal(activeTeamModalMember);
     });
   }
 
@@ -849,6 +1016,13 @@
         el.addEventListener("click", closeProjectsModal);
       });
   }
+  if (teamMemberModal) {
+    teamMemberModal
+      .querySelectorAll("[data-close-team-modal]")
+      .forEach(function (el) {
+        el.addEventListener("click", closeTeamMemberModal);
+      });
+  }
   if (casesAllBtn) {
     casesAllBtn.addEventListener("click", function () {
       openProjectsModal();
@@ -859,11 +1033,14 @@
     const isCaseModalOpen = modal.classList.contains("is-open");
     const isProjectsOpen =
       projectsModal && projectsModal.classList.contains("is-open");
+    const isTeamModalOpen =
+      teamMemberModal && teamMemberModal.classList.contains("is-open");
 
-    if (!isCaseModalOpen && !isProjectsOpen) return;
+    if (!isCaseModalOpen && !isProjectsOpen && !isTeamModalOpen) return;
     if (e.key === "Escape") {
       if (isCaseModalOpen) closeModal();
       if (isProjectsOpen) closeProjectsModal();
+      if (isTeamModalOpen) closeTeamMemberModal();
       return;
     }
     if (isCaseModalOpen && e.key === "ArrowLeft") {
