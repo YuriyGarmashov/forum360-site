@@ -4,7 +4,11 @@
   const PHOTO_ROOT = "Фото для кейсов";
 
   function photoUrl(folder, file) {
-    return [PHOTO_ROOT, folder, file]
+    const folderParts = String(folder || "")
+      .split("/")
+      .filter(Boolean);
+
+    return [PHOTO_ROOT].concat(folderParts, [file])
       .map(function (part) {
         return encodeURIComponent(part);
       })
@@ -15,182 +19,250 @@
     seminars4: {
       folder: "4 семинара",
       files: [
-        "_ANO2888.jpg",
-        "_ANO2900.jpg",
-        "_ANO2902.jpg",
-        "_ANO2927.jpg",
-        "_ANO2974.jpg",
-        "_ANO3270.jpg",
-        "_ANO3556.jpg",
-        "C2_08837.jpg",
-        "C2_08892.jpg",
-        "C2_09171.jpg",
-        "C2_09662.jpg",
-        "IMG_1246.jpeg",
-        "IMG_1247.jpeg",
-        "IMG_1248.jpeg",
-        "IMG_1249.jpeg",
-        "IMG_1250.jpeg",
-        "IMG_1251.jpeg",
-        "IMG_8298.jpg",
-        "IMG_8760.jpg",
+        "1.webp",
+        "2.webp",
+        "3.webp",
+        "4.webp",
+        "5.webp",
+        "6.webp",
+        "7.webp",
+        "8.webp",
+        "9.webp",
+        "10.webp",
+        "11.webp",
+        "12.webp",
+        "13.webp",
+        "14.webp",
+        "15.webp",
+        "16.webp",
       ],
     },
     seminars2: {
       folder: "2 семинара",
       files: [
-        "0P8A4231.jpg",
-        "0P8A4234.jpg",
-        "0P8A4243.jpg",
-        "0P8A4497.jpg",
-        "151025 - 2 (1).jpg",
-        "151025 - 2 (2).jpg",
-        "151025 - 2 (3).jpg",
-        "20251016-1 (4).jpg",
-        "20251016-2 (46).jpg",
-        "20251017-2 (10).jpg",
-        "IMG_1262.png",
-        "IMG_1263.png",
-        "IMG_1264.png",
-        "IMG_1265.png",
-        "IMG_1266.png",
-        "IMG_1267.png",
-        "IMG_1268.png",
-        "IMG_1269.png",
-        "IMG_1270.png",
-        "IMG_8481.JPG",
+        "1.webp",
+        "2.webp",
+        "3.webp",
+        "4.webp",
+        "5.webp",
+        "6.webp",
+        "7.webp",
+        "8.webp",
+        "9.webp",
+        "10.webp",
+        "11.webp",
+        "12.webp",
+        "13.webp",
+        "14.webp",
+        "15.webp",
+        "16.webp",
+        "17.webp",
+        "18.webp",
+        "19.webp",
+        "20.webp",
       ],
     },
     tourism: {
       folder: "Туризм",
       files: [
-        "FRV (107 из 320).jpg",
-        "FRV (124 из 320).jpg",
-        "FRV (129 из 320).jpg",
-        "FRV (143 из 320).jpg",
-        "FRV (197 из 320).jpg",
-        "FRV (262 из 320).jpg",
-        "FRV (309 из 320).jpg",
-        "FRV (34 из 320).jpg",
-        "FRV (340 из 214).jpg",
-        "FRV (341 из 214).jpg",
-        "FRV (342 из 214).jpg",
-        "FRV (363 из 214).jpg",
-        "FRV (370 из 214).jpg",
-        "FRV (379 из 214).jpg",
-        "FRV (6 из 320).jpg",
-        "FRV (7 из 320).jpg",
-        "FRV (73 из 320).jpg",
-        "FRV (8 из 320).jpg",
-        "IMG_1233.jpeg",
-        "IMG_1234.jpeg",
-        "IMG_1235.jpeg",
-        "IMG_1236.jpeg",
-        "IMG_1237.jpeg",
-        "IMG_1238.jpeg",
-        "IMG_1239.jpeg",
-        "IMG_1240.jpeg",
-        "IMG_1243.jpeg",
-        "IMG_1244.jpeg",
-        "IMG_1245.jpeg",
-        "IMG_1252.jpeg",
-        "IMG_9686.jpeg",
-        "IMG_9687.jpeg",
+        "1.webp",
+        "2.webp",
+        "3.webp",
+        "4.webp",
+        "5.webp",
+        "6.webp",
+        "7.webp",
+        "8.webp",
+        "9.webp",
+        "10.webp",
+        "11.webp",
+        "12.webp",
+        "13.webp",
+        "14.webp",
+        "15.webp",
+        "16.webp",
+        "17.webp",
+        "18.webp",
+        "19.webp",
+        "20.webp",
+        "21.webp",
+        "22.webp",
+        "23.webp",
+        "24.webp",
+        "25.webp",
+        "26.webp",
+        "27.webp",
+        "28.webp",
+        "29.webp",
+        "30.webp",
       ],
     },
     molodoy: {
       folder: "Молодой город",
       files: [
-        "IMG_0467.jpeg",
-        "IMG_0493.jpeg",
-        "IMG_0509.jpeg",
-        "IMG_0522.jpeg",
-        "IMG_0523.jpeg",
-        "IMG_0582.jpeg",
-        "IMG_0584.jpeg",
-        "IMG_0601.jpeg",
-        "IMG_0602.jpeg",
-        "IMG_0614.jpeg",
-        "IMG_1219.jpeg",
-        "IMG_1220.jpeg",
-        "IMG_1221.jpeg",
-        "IMG_1256.png",
-        "IMG_1257.png",
-        "IMG_1258.png",
-        "IMG_1259.png",
-        "IMG_1260.png",
-        "IMG_1261.png",
+        "1.webp",
+        "2.webp",
+        "3.webp",
+        "4.webp",
+        "5.webp",
+        "6.webp",
+        "7.webp",
+        "8.webp",
+        "9.webp",
+        "10.webp",
+        "11.webp",
+        "12.webp",
+        "13.webp",
+        "14.webp",
+        "15.webp",
+        "16.webp",
+        "17.webp",
+        "18.webp",
+        "19.webp",
+        "20.webp",
+        "21.webp",
+        "22.webp",
+        "23.webp",
+        "24.webp",
+        "25.webp",
       ],
     },
   };
 
   const cases = {
     seminars4: {
-      title: "Семинары 4",
+      title: "Комплекс услуг в рамках проведения четырёх Семинаров",
       meta: "ФГБНУ «Институт изучения детства, семьи и воспитания» · Республика Калмыкия, Республика Дагестан, Липецкая и Брянская области",
       body: "<p>Комплекс услуг в рамках проведения четырёх семинаров для федерального заказчика.</p><p>География охвата — четыре субъекта РФ; полный цикл организации и сопровождения в рамках контракта.</p>",
       eis: "https://zakupki.gov.ru/epz/order/notice/zk20/view/common-info.html?regNumber=0373100134325000034",
     },
     seminars2: {
-      title: "Семинары 2",
+      title: "Комплекс услуг в рамках проведения двух Семинаров",
       meta: "ФГБНУ «Институт изучения детства, семьи и воспитания» · г. Владикавказ, г. Владимир",
       body: "<p>Комплекс услуг в рамках проведения двух семинаров.</p><p>Реализация на площадках в двух регионах с единым стандартом качества для заказчика.</p>",
       eis: "https://zakupki.gov.ru/epz/order/notice/zk20/view/common-info.html?regNumber=0373100134325000036",
     },
     tourism: {
-      title: "Туризм",
+      title:
+        'Организация и проведение заседания коллегии Государственного комитета Республики Татарстан по туризму "Об итогах работы в 2025 году и задачах на 2026 год"',
       meta: "Госкомитет Республики Татарстан по туризму · г. Казань",
       body: "<p>Организация и проведение заседания коллегии Госкомитета РТ по туризму «Об итогах работы в 2025 году и задачах на 2026 год».</p>",
       eis: "https://zakupki.gov.ru/epz/order/notice/ea20/view/common-info.html?regNumber=0111200000925000703",
     },
     molodoy: {
-      title: "Молодой город",
+      title: "Организация программы форума «Молодой город»",
       meta: "ГБУ КО «Областной молодёжный центр» · г. Калуга",
       body: "<p>Организация программы форума «Молодой город» для регионального заказчика.</p>",
       eis: "https://zakupki.gov.ru/epz/order/notice/zk20/view/common-info.html?regNumber=0137200001226001762",
     },
   };
+  const CASE_ORDER = ["seminars4", "seminars2", "tourism", "molodoy"];
 
   const members = {
     ekaterina: {
       name: "Екатерина Алмаз",
       role: "Исполнительный директор",
-      desc: "Держит общий контур: финансы, процессы и качество результата.\n\nКлючевые задачи\n\n• бюджет и договорная часть\n• координация команды и подрядчиков\n• контроль сроков и отчётности\n\nОпыт: 6 лет. Ключевые заказчики: Правительство Москвы, Росмолодёжь, Госкомитет РТ по туризму.",
+      desc: "Следит за всеми глобальными процессами компании, обеспечивает финансирование проектов, порой не спит ночами, чтобы Заказчик был доволен проектом.",
       s1: "6 лет",
       s2: "56",
       s2Lab: "Контракты",
-      s3: "176 млн ₽",
+      s3: "176 млн\u00a0₽",
       s3Lab: "Сумма проектов",
+      experience:
+        "6 лет в тендерах в сфере организации мероприятий по всей России\n\n" +
+        "Сопровождение 56 контрактов на сумму 176 млн. в части юридического сопровождения, контроля соблюдения сроков по техническому заданию, отчётной документации.\n\n" +
+        "Работала с Заказчиками:\n\n" +
+        "- Министерство Внутренней Политики Приморского края\n" +
+        "- Управление Делами Мэра и Правительства Москвы\n" +
+        "- Государственный Комитет Республики Татарстан по Туризму\n" +
+        "- Федеральное агентство по делам молодежи\n" +
+        "- Министерство туризма Ставропольского Края\n" +
+        "- ГБУ КО ОМЦ Калуга\n" +
+        "- МБУМП «МКДЦ» Мурманской области\n" +
+        "- Администрация Сургутского района",
     },
     marina: {
       name: "Марина Плеханова",
       role: "Руководитель тендерного отдела",
-      desc: "Тендерный контур: от подбора закупки до подачи и сопровождения.\n\nКлючевые задачи\n\n• анализ закупок и расчёты\n• заявки и документация\n• контроль ЭЦП и сроков\n\nОпыт: 4 года. 134+ выигранных контрактов.",
+      desc:
+        "Мы называем её «счастливой рукой» нашей команды.\n\n" +
+        "Увидела, просчитала, выиграла — это точно про Марину.\n\n" +
+        "Она знает всё о тендерных площадках, заявках и УПД: следит, чтобы документы подгружались и подписывались оперативно и без ошибок.",
       s1: "4 года",
       s2: "134+",
       s2Lab: "Выигранных контрактов",
-      s3: "420+ млн ₽",
+      s3: "420+ млн\u00a0₽",
       s3Lab: "Объём контрактов",
+      experience:
+        "4 года в государственных закупках\n\n" +
+        "Выиграно 134+ контрактов по 44-ФЗ, 223-ФЗ на сумму 420+ млн.",
     },
     lyubov: {
       name: "Любовь Пасека",
       role: "Руководитель отдела реализации / дизайнер",
-      desc: "Реализация мероприятий и дизайн — делает так, чтобы и выглядело, и работало.\n\nКлючевые задачи\n\n• визуал и материалы\n• подрядчики и логистика\n• коммуникация с заказчиком\n\nОпыт: 2 года. Форматы: 300–1000 участников, сопровождение 44‑ФЗ.",
+      desc: "Сделать макеты за сутки — она готова; найти подход к любому Заказчику — это про неё; творческая изюминка нашей команды.",
       s1: "2 года",
       s2: "800–1000",
       s2Lab: "Участников форумов",
       s3: "44-ФЗ",
       s3Lab: "Сопровождение",
+      experience:
+        "2 года в организации мероприятий разного формата:\n\n" +
+        "- Тренинги на 300–500 человек\n" +
+        "- Бизнес-форумы на 800–1000 человек\n" +
+        "- Тендеры по ФЗ-44 разного уровня сложности от администрации Республики Татарстан, города Москвы, Московской области\n\n" +
+        "Опыт работы с такими спикерами, как:\n\n" +
+        "- Алексей Ситников\n" +
+        "- Владимир Якуба\n" +
+        "- Игорь Рызов\n" +
+        "- Евгений Колотилов\n" +
+        "- Сергей Рязанский\n\n" +
+        "Государственные заказчики:\n\n" +
+        "- ГБУ КО ОМЦ Калуга\n" +
+        "- Государственный комитет Республики Татарстан по туризму\n" +
+        "- ФГБНУ «Институт изучения детства, семьи и воспитания»",
     },
     anastasia: {
       name: "Анастасия Гармашова",
       role: "Руководитель проектного отдела",
-      desc: "Проектный контур: дедлайны, контроль ТЗ и отчётность.\n\nКлючевые задачи\n\n• планирование и контроль сроков\n• отчётные документы\n• координация команды на площадке\n\nОпыт: 3 года. Форматы: форумы 800+, тренинги 100–350, вебинары.",
+      desc:
+        "Контролирует самое важное — сроки и отчётность.\n\n" +
+        "Структура во всём — её главный козырь, поэтому проекты реализуются чётко, как часы.\n\n" +
+        "Именно Анастасия обладает редким талантом сдавать отчётность буквально в день проведения мероприятия.",
       s1: "3 года",
       s2: "30+",
       s2Lab: "Госконтрактов",
       s3: "2000+",
       s3Lab: "Отчётных документов",
+      experience:
+        "3 года в сфере организации мероприятий по всей России (государственные и бизнес-мероприятия)\n\n" +
+        "Сопровождение 30+ гос.контрактов, также одновременное ведение до 14 проектов различной сложности с соблюдением сроков и бюджетов\n\n" +
+        "Подготовка и сдача 2000+ отчётных документов государственному заказчику.\n\n" +
+        "Опыт работы с тендерами по 44-ФЗ: просчёт тендеров, сбор документов, подача заявок\n\n" +
+        "Работала со следующими государственными заказчиками:\n\n" +
+        "- Федеральное агентство по делам молодёжи\n" +
+        "- ФГБУ МПМЦ «Российский центр гражданского и патриотического воспитания детей и молодежи»\n" +
+        "- ФГБУ «Российский детско-юношеский центр»\n" +
+        "- Правительство Москвы\n" +
+        "- Администрация Сургутского района\n" +
+        "- Администрация Краснодарского края\n" +
+        "- ГБУ г. Москвы «Московский дом общественных организаций»\n" +
+        "- ГБУ «Московский дом национальностей»\n" +
+        "- ГБУ ДПО г. Москвы «Московский центр воспитательных практик»\n" +
+        "- ГБУ КО ОМЦ Калуга\n" +
+        "- МБУ «Центр поддержки молодежных инициатив»\n" +
+        "- Государственный комитет Республики Татарстан по туризму\n" +
+        "- ФГБНУ «Институт изучения детства, семьи и воспитания»\n\n" +
+        "Опыт организации мероприятий «под ключ»:\n\n" +
+        "- Бизнес-форум «Трансформация бизнеса: вызовы и возможности» (800+ участников)\n" +
+        "- Бизнес-тренинги по переговорам, продажам (на 100–350 человек)\n" +
+        "- Концерты, церемонии награждения, бизнес-завтраки, семинары, мастер-классы, вебинары, деловые встречи\n\n" +
+        "Работа с топовыми спикерами в сфере переговоров, продаж и маркетинга:\n\n" +
+        "- Радислав Гандапас\n" +
+        "- Евгений Колотилов\n" +
+        "- Илья Балахнин\n" +
+        "- Игорь Рызов\n" +
+        "- Владимир Якуба",
     },
   };
 
@@ -203,6 +275,8 @@
   const ts3 = document.getElementById("tStat3");
   const ts2Lab = document.getElementById("tStat2Lab");
   const ts3Lab = document.getElementById("tStat3Lab");
+  const tooltipMoreBtn = document.getElementById("tooltipMoreBtn");
+  let tooltipDetailOpen = false;
 
   function descToHtml(text) {
     return text
@@ -254,67 +328,262 @@
     return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   }
 
-  // --- SVG-секторы команды ---
-  const teamSectors = document.querySelector(".team-sectors");
-  let activeSector = null;
+  function experienceToHtml(text) {
+    if (!text || typeof text !== "string") return "";
+    return text
+      .split(/\n\n+/)
+      .map(function (block) {
+        const b = block.trim();
+        if (!b) return "";
 
-  if (teamSectors) {
-    teamSectors.addEventListener("mousemove", function (e) {
-      const target = e.target;
-      const isSector = target.classList && target.classList.contains("sector");
+        const lines = b
+          .split("\n")
+          .map(function (l) {
+            return l.trim();
+          })
+          .filter(Boolean);
 
-      if (!isSector) {
-        if (activeSector) {
-          activeSector = null;
+        if (
+          lines.length >= 2 &&
+          lines.every(function (l) {
+            return /^[-–—]/.test(l);
+          })
+        ) {
+          return (
+            '<ul class="tooltip-list">' +
+            lines
+              .map(function (l) {
+                const item = l.replace(/^[-–—]\s*/, "").trim();
+                return "<li>" + escapeHtml(item) + "</li>";
+              })
+              .join("") +
+            "</ul>"
+          );
         }
-        tooltip.classList.remove("is-active");
-        return;
-      }
 
-      const key = target.getAttribute("data-member");
-      const data = members[key];
-      if (!data) return;
+        if (
+          lines.length === 1 &&
+          /:$/.test(lines[0]) &&
+          !/^[-–—]/.test(lines[0])
+        ) {
+          return (
+            '<div class="tooltip-kicker">' + escapeHtml(lines[0]) + "</div>"
+          );
+        }
 
-      if (target !== activeSector) {
-        activeSector = target;
+        const body = lines.join("\n");
+        return (
+          "<p>" +
+          escapeHtml(body).replace(/\n/g, "<br>") +
+          "</p>"
+        );
+      })
+      .join("");
+  }
 
-        tName.textContent = data.name;
-        tRole.textContent = data.role;
-        tDesc.innerHTML = descToHtml(data.desc);
-        ts1.textContent = data.s1;
-        ts2.textContent = data.s2;
-        ts3.textContent = data.s3;
-        ts2Lab.textContent = data.s2Lab || "Показатель";
-        ts3Lab.textContent = data.s3Lab || "Показатель";
-      }
+  // --- Интерактивный круг: 4 отдельных SVG (viewBox 1000×1000), hit-слой, тултип внутри контейнера ---
+  const teamCircle = document.getElementById("teamCircle");
+  let hoverMemberKey = null;
+  let activeQuarterEl = null;
+  let teamLeaveTimer = null;
+  let tooltipFreezeCloseUntil = 0;
+  const tooltipPositionClasses = [
+    "tooltip--pos-ekaterina",
+    "tooltip--pos-marina",
+    "tooltip--pos-lyubov",
+    "tooltip--pos-anastasia",
+  ];
 
-      const pad = 16;
-      const tw = tooltip.offsetWidth;
-      const th = tooltip.offsetHeight;
-      let x = e.clientX + 20;
-      let y = e.clientY + 20;
-      if (x + tw > window.innerWidth - pad) x = window.innerWidth - tw - pad;
-      if (y + th > window.innerHeight - pad) y = window.innerHeight - th - pad;
-      if (x < pad) x = pad;
-      if (y < pad) y = pad;
+  function cancelTeamLeaveSchedule() {
+    if (teamLeaveTimer !== null) {
+      clearTimeout(teamLeaveTimer);
+      teamLeaveTimer = null;
+    }
+  }
 
-      tooltip.style.left = x + "px";
-      tooltip.style.top = y + "px";
-      tooltip.classList.add("is-active");
+  function scheduleTeamLeave() {
+    cancelTeamLeaveSchedule();
+    const remainingFreezeMs = tooltipFreezeCloseUntil - Date.now();
+    if (remainingFreezeMs > 0) {
+      teamLeaveTimer = setTimeout(scheduleTeamLeave, remainingFreezeMs + 16);
+      return;
+    }
+    teamLeaveTimer = setTimeout(function () {
+      teamLeaveTimer = null;
+      clearMemberTooltip();
+    }, 220);
+  }
+
+  function collapseTooltipMore() {
+    tooltipDetailOpen = false;
+    if (tooltip) {
+      tooltip.classList.remove("tooltip--expanded");
+    }
+    if (tooltipMoreBtn) {
+      tooltipMoreBtn.setAttribute("aria-expanded", "false");
+      tooltipMoreBtn.textContent = "Подробнее об опыте";
+    }
+  }
+
+  function showMemberTooltip(key) {
+    const data = members[key];
+    if (!data || !tooltip) return;
+
+    collapseTooltipMore();
+
+    tName.textContent = data.name;
+    tRole.textContent = data.role;
+    tDesc.innerHTML = descToHtml(data.desc);
+    ts1.textContent = data.s1;
+    ts2.textContent = data.s2;
+    ts3.textContent = data.s3;
+    ts2Lab.textContent = data.s2Lab || "Показатель";
+    ts3Lab.textContent = data.s3Lab || "Показатель";
+
+    if (data.experience && tooltipMoreBtn) {
+      tooltipMoreBtn.hidden = false;
+    } else if (tooltipMoreBtn) {
+      tooltipMoreBtn.hidden = true;
+    }
+
+    tooltip.classList.remove(...tooltipPositionClasses);
+    tooltip.classList.remove("tooltip--expanded");
+    tooltip.classList.add("tooltip--pos-" + key, "is-active");
+  }
+
+  function activateMember(key) {
+    cancelTeamLeaveSchedule();
+    const data = members[key];
+    if (!data || !teamCircle) return;
+
+    const quarter = teamCircle.querySelector(
+      '.team-quarter[data-member="' + key + '"]',
+    );
+    if (!quarter) return;
+
+    if (activeQuarterEl && activeQuarterEl !== quarter) {
+      activeQuarterEl.classList.remove("is-hover");
+    }
+
+    activeQuarterEl = quarter;
+    hoverMemberKey = key;
+    quarter.classList.add("is-hover");
+    teamCircle.classList.add("is-active");
+    showMemberTooltip(key);
+  }
+
+  function clearMemberTooltip() {
+    cancelTeamLeaveSchedule();
+    hoverMemberKey = null;
+    if (activeQuarterEl) activeQuarterEl.classList.remove("is-hover");
+    activeQuarterEl = null;
+    if (teamCircle) teamCircle.classList.remove("is-active");
+    collapseTooltipMore();
+    if (tooltipMoreBtn) {
+      tooltipMoreBtn.hidden = true;
+    }
+    if (tooltip) {
+      // Keep last position class during fade-out to avoid jump flicker.
+      // Next hover resets position classes in showMemberTooltip().
+      tooltip.classList.remove("is-active");
+    }
+  }
+
+  const hitPaths = teamCircle
+    ? teamCircle.querySelectorAll(".team-circle-hits path[data-member]")
+    : [];
+
+  hitPaths.forEach(function (hitPath) {
+    const key = hitPath.getAttribute("data-member");
+    if (!key || !teamCircle) return;
+    const data = members[key];
+
+    hitPath.setAttribute("tabindex", "0");
+    hitPath.setAttribute("focusable", "true");
+    hitPath.setAttribute("role", "button");
+    if (data) {
+      hitPath.setAttribute("aria-label", data.name + " — " + data.role);
+    }
+
+    hitPath.addEventListener("pointerenter", function () {
+      activateMember(key);
     });
 
-    teamSectors.addEventListener("mouseleave", function () {
-      activeSector = null;
-      tooltip.classList.remove("is-active");
+    hitPath.addEventListener("focus", function () {
+      activateMember(key);
+    });
+
+    hitPath.addEventListener("pointerleave", function () {
+      if (hoverMemberKey === key && document.activeElement !== hitPath) {
+        scheduleTeamLeave();
+      }
+    });
+
+    hitPath.addEventListener("blur", function () {
+      if (hoverMemberKey === key) clearMemberTooltip();
+    });
+
+    hitPath.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        activateMember(key);
+      }
+      if (e.key === "Escape") {
+        hitPath.blur();
+        clearMemberTooltip();
+      }
+    });
+  });
+
+  if (teamCircle) {
+    teamCircle.addEventListener("pointerleave", scheduleTeamLeave);
+  }
+
+  if (tooltip) {
+    tooltip.addEventListener("pointerenter", cancelTeamLeaveSchedule);
+    tooltip.addEventListener("pointerleave", scheduleTeamLeave);
+  }
+
+  if (tooltipMoreBtn && tooltip) {
+    tooltipMoreBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      if (!hoverMemberKey) return;
+      const data = members[hoverMemberKey];
+      if (!data) return;
+
+      tooltipFreezeCloseUntil = Date.now() + 550;
+      cancelTeamLeaveSchedule();
+
+      tooltipDetailOpen = !tooltipDetailOpen;
+      tooltip.classList.toggle("tooltip--expanded", tooltipDetailOpen);
+      tooltipMoreBtn.setAttribute(
+        "aria-expanded",
+        tooltipDetailOpen ? "true" : "false",
+      );
+      tooltipMoreBtn.textContent = tooltipDetailOpen
+        ? "Краткое описание"
+        : "Подробнее об опыте";
+
+      if (tooltipDetailOpen) {
+        tDesc.innerHTML = experienceToHtml(data.experience || "");
+      } else {
+        tDesc.innerHTML = descToHtml(data.desc || "");
+      }
+
     });
   }
 
   const modal = document.getElementById("modal");
+  const projectsModal = document.getElementById("projectsModal");
+  const casesAllBtn = document.getElementById("casesAllBtn");
+  const casesRows = document.getElementById("casesRows");
+  const projectsRows = document.getElementById("projectsRows");
   const modalTitle = document.getElementById("modalTitle");
   const modalMeta = document.getElementById("modalMeta");
   const modalBody = document.getElementById("modalBody");
   const modalEis = document.getElementById("modalEis");
   const galleryImg = document.getElementById("modalGalleryImg");
+  const galleryLoader = document.getElementById("modalGalleryLoader");
   const galleryCount = document.getElementById("modalGalleryCount");
   const galleryPrev = document.getElementById("galleryPrev");
   const galleryNext = document.getElementById("galleryNext");
@@ -322,6 +591,16 @@
 
   const galleryState = { urls: [], index: 0, title: "" };
   const preloadCache = new Set();
+  let galleryRequestId = 0;
+  let reopenProjectsAfterCaseClose = false;
+
+  function setGalleryLoading(isLoading) {
+    if (!galleryFrame) return;
+    galleryFrame.classList.toggle("is-loading", Boolean(isLoading));
+    if (galleryLoader) {
+      galleryLoader.setAttribute("aria-hidden", isLoading ? "false" : "true");
+    }
+  }
 
   function preloadImage(url) {
     if (!url || preloadCache.has(url)) return;
@@ -339,22 +618,59 @@
     });
   }
 
+  function warmupCasePhotos() {
+    Object.keys(CASE_PHOTOS).forEach(function (caseId) {
+      const urls = buildGalleryUrls(caseId);
+      // Warm first frames for instant open, defer the rest.
+      urls.slice(0, 4).forEach(preloadImage);
+
+      if (urls.length > 4) {
+        const defer = function () {
+          urls.slice(4).forEach(preloadImage);
+        };
+        if ("requestIdleCallback" in window) {
+          window.requestIdleCallback(defer, { timeout: 2500 });
+        } else {
+          setTimeout(defer, 1200);
+        }
+      }
+    });
+  }
+
   function updateGalleryView() {
     const n = galleryState.urls.length;
     if (n === 0) {
       galleryImg.removeAttribute("src");
       galleryImg.alt = "";
       galleryCount.textContent = "";
+      setGalleryLoading(false);
       return;
     }
     galleryState.index = ((galleryState.index % n) + n) % n;
     const url = galleryState.urls[galleryState.index];
-    galleryImg.decoding = "async";
-    galleryImg.loading = "eager";
-    galleryImg.src = url;
+    const requestId = ++galleryRequestId;
+
     galleryImg.alt =
       galleryState.title + " — фото " + (galleryState.index + 1) + " из " + n;
     galleryCount.textContent = galleryState.index + 1 + " / " + n;
+    setGalleryLoading(true);
+
+    const nextImage = new Image();
+    nextImage.decoding = "async";
+    nextImage.loading = "eager";
+    nextImage.src = url;
+    nextImage.onload = function () {
+      if (requestId !== galleryRequestId) return;
+      galleryImg.decoding = "async";
+      galleryImg.loading = "eager";
+      galleryImg.src = url;
+      setGalleryLoading(false);
+    };
+    nextImage.onerror = function () {
+      if (requestId !== galleryRequestId) return;
+      galleryImg.removeAttribute("src");
+      setGalleryLoading(false);
+    };
 
     preloadImage(galleryState.urls[(galleryState.index + 1) % n]);
     preloadImage(galleryState.urls[(galleryState.index - 1 + n) % n]);
@@ -369,6 +685,14 @@
   function openModal(id) {
     const c = cases[id];
     if (!c) return;
+
+    if (projectsModal && projectsModal.classList.contains("is-open")) {
+      reopenProjectsAfterCaseClose = true;
+      projectsModal.classList.remove("is-open");
+    } else {
+      reopenProjectsAfterCaseClose = false;
+    }
+
     galleryState.urls = buildGalleryUrls(id);
     galleryState.index = 0;
     galleryState.title = c.title;
@@ -385,26 +709,103 @@
 
   function closeModal() {
     modal.classList.remove("is-open");
-    document.body.style.overflow = "";
+    if (reopenProjectsAfterCaseClose && projectsModal) {
+      projectsModal.classList.add("is-open");
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    reopenProjectsAfterCaseClose = false;
+    galleryRequestId += 1;
+    setGalleryLoading(false);
     galleryImg.removeAttribute("src");
   }
 
-  document.querySelectorAll(".cases-row--data").forEach(function (row) {
-    row.addEventListener("click", function (e) {
-      if (e.target.closest(".eis-link")) return;
-      const id = row.getAttribute("data-case");
-      if (id) openModal(id);
-    });
+  function buildCaseRow(id, index, opts) {
+    const c = cases[id];
+    if (!c) return "";
+    const compactMeta = c.meta.replace(/\s*·\s*/g, " · ");
+    const number = String(index + 1).padStart(2, "0");
+    const modeClass = opts && opts.all ? " cases-row--all" : "";
+    return (
+      '<div class="cases-row cases-row--data' +
+      modeClass +
+      '" role="button" tabindex="0" data-case="' +
+      id +
+      '">' +
+      '<span class="mono" role="cell">' +
+      number +
+      "</span>" +
+      '<span role="cell"><strong>' +
+      escapeHtml(c.title) +
+      "</strong></span>" +
+      '<span role="cell" class="cases-loc">' +
+      escapeHtml(compactMeta) +
+      "</span>" +
+      '<span role="cell"><a class="eis-link" href="' +
+      c.eis +
+      '" target="_blank" rel="noopener noreferrer">ЕИС</a></span>' +
+      "</div>"
+    );
+  }
 
-    row.addEventListener("keydown", function (e) {
-      if (e.key === "Enter" || e.key === " ") {
+  function renderCasesTables() {
+    const orderedIds = CASE_ORDER.filter(function (id) {
+      return Boolean(cases[id]);
+    });
+    const featuredIds = orderedIds.slice(0, 4);
+
+    if (casesRows) {
+      casesRows.innerHTML = featuredIds
+        .map(function (id, i) {
+          return buildCaseRow(id, i, { all: false });
+        })
+        .join("");
+    }
+
+    if (projectsRows) {
+      projectsRows.innerHTML = orderedIds
+        .map(function (id, i) {
+          return buildCaseRow(id, i, { all: true });
+        })
+        .join("");
+    }
+  }
+
+  function bindCaseRows(rootEl) {
+    if (!rootEl) return;
+    rootEl.querySelectorAll(".cases-row--data").forEach(function (row) {
+      row.addEventListener("click", function (e) {
         if (e.target.closest(".eis-link")) return;
-        e.preventDefault();
         const id = row.getAttribute("data-case");
         if (id) openModal(id);
-      }
+      });
+
+      row.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          if (e.target.closest(".eis-link")) return;
+          e.preventDefault();
+          const id = row.getAttribute("data-case");
+          if (id) openModal(id);
+        }
+      });
     });
-  });
+  }
+
+  function openProjectsModal() {
+    if (!projectsModal) return;
+    projectsModal.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeProjectsModal() {
+    if (!projectsModal) return;
+    projectsModal.classList.remove("is-open");
+    reopenProjectsAfterCaseClose = false;
+    if (!modal.classList.contains("is-open")) {
+      document.body.style.overflow = "";
+    }
+  }
 
   if (galleryPrev)
     galleryPrev.addEventListener("click", function () {
@@ -441,18 +842,35 @@
   modal.querySelectorAll("[data-close-modal]").forEach(function (el) {
     el.addEventListener("click", closeModal);
   });
+  if (projectsModal) {
+    projectsModal
+      .querySelectorAll("[data-close-projects-modal]")
+      .forEach(function (el) {
+        el.addEventListener("click", closeProjectsModal);
+      });
+  }
+  if (casesAllBtn) {
+    casesAllBtn.addEventListener("click", function () {
+      openProjectsModal();
+    });
+  }
 
   document.addEventListener("keydown", function (e) {
-    if (!modal.classList.contains("is-open")) return;
+    const isCaseModalOpen = modal.classList.contains("is-open");
+    const isProjectsOpen =
+      projectsModal && projectsModal.classList.contains("is-open");
+
+    if (!isCaseModalOpen && !isProjectsOpen) return;
     if (e.key === "Escape") {
-      closeModal();
+      if (isCaseModalOpen) closeModal();
+      if (isProjectsOpen) closeProjectsModal();
       return;
     }
-    if (e.key === "ArrowLeft") {
+    if (isCaseModalOpen && e.key === "ArrowLeft") {
       e.preventDefault();
       galleryStep(-1);
     }
-    if (e.key === "ArrowRight") {
+    if (isCaseModalOpen && e.key === "ArrowRight") {
       e.preventDefault();
       galleryStep(1);
     }
@@ -519,6 +937,10 @@
   }
 
   initReveals();
+  renderCasesTables();
+  bindCaseRows(casesRows);
+  bindCaseRows(projectsRows);
+  warmupCasePhotos();
 
   function updateFooterTime() {
     const el = document.getElementById("footer-time");
