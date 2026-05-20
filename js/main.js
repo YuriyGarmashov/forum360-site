@@ -575,9 +575,14 @@
       teamMemberAvatar.removeAttribute("src");
       teamMemberAvatar.alt = "";
     }
+    const caseModal = document.getElementById("modal");
+    const allProjectsModal = document.getElementById("projectsModal");
     if (
-      !modal.classList.contains("is-open") &&
-      !(projectsModal && projectsModal.classList.contains("is-open"))
+      !(caseModal && caseModal.classList.contains("is-open")) &&
+      !(
+        allProjectsModal &&
+        allProjectsModal.classList.contains("is-open")
+      )
     ) {
       document.body.style.overflow = "";
     }
