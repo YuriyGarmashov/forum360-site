@@ -2,6 +2,50 @@
   "use strict";
 
   const PHOTO_ROOT = "Фото для кейсов";
+  const PHOTO_VERSION = "20260521";
+
+  if ("scrollRestoration" in window.history) {
+    window.history.scrollRestoration = "manual";
+  }
+
+  function resetScrollOnReload() {
+    const navEntry = performance.getEntriesByType
+      ? performance.getEntriesByType("navigation")[0]
+      : null;
+    const isReload = navEntry ? navEntry.type === "reload" : false;
+
+    if (!isReload) return;
+    if (window.location.hash) {
+      window.history.replaceState(
+        null,
+        "",
+        window.location.pathname + window.location.search,
+      );
+    }
+
+    requestAnimationFrame(function () {
+      window.scrollTo(0, 0);
+    });
+  }
+
+  resetScrollOnReload();
+
+  function scrollToPageTarget(target) {
+    if (!target) return;
+    const header = document.querySelector(".site-header");
+    const headerHeight = header ? header.getBoundingClientRect().height : 0;
+    const extraGap = window.matchMedia("(max-width: 880px)").matches ? 10 : 16;
+    const top =
+      target.getBoundingClientRect().top +
+      window.scrollY -
+      headerHeight -
+      extraGap;
+
+    window.scrollTo({
+      top: Math.max(0, Math.round(top)),
+      behavior: "smooth",
+    });
+  }
 
   function photoUrl(folder, file) {
     const folderParts = String(folder || "")
@@ -12,7 +56,7 @@
       .map(function (part) {
         return encodeURIComponent(part);
       })
-      .join("/");
+      .join("/") + "?v=" + PHOTO_VERSION;
   }
 
   const CASE_PHOTOS = {
@@ -125,6 +169,14 @@
         "23.webp",
         "24.webp",
         "25.webp",
+        "26.webp",
+        "27.webp",
+        "28.webp",
+        "29.webp",
+        "30.webp",
+        "31.webp",
+        "32.webp",
+        "33.webp",
       ],
     },
   };
@@ -1075,6 +1127,21 @@
       });
     });
   }
+
+  document
+    .querySelectorAll('.site-nav a[href^="#"], .hero-cta a[href^="#"]')
+    .forEach(function (link) {
+      link.addEventListener("click", function (e) {
+        const hash = link.getAttribute("href");
+        if (!hash || hash === "#") return;
+        const target = document.querySelector(hash);
+        if (!target) return;
+
+        e.preventDefault();
+        scrollToPageTarget(target);
+        window.history.pushState(null, "", hash);
+      });
+    });
 
   function initReveals() {
     const selectors = [
