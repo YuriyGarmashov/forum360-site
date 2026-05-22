@@ -1,4 +1,5 @@
 import type { MouseEvent } from "react";
+import { assetUrl } from "@/lib/assetUrl";
 import logoUrl from "../../../assets/logo.svg?url";
 
 type HeaderLogoProps = {
@@ -14,7 +15,7 @@ export function HeaderLogo({ onClick }: HeaderLogoProps) {
       onClick={onClick}
     >
       <img
-        src={logoUrl}
+        src={logoUrl || assetUrl("assets/logo.svg")}
         alt="ФОРУМ 360"
         className="logo-img"
         decoding="async"

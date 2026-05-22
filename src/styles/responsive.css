@@ -142,7 +142,8 @@
         min-height: var(--header-h);
         height: var(--header-h);
         max-height: var(--header-h);
-        padding-top: 0;
+        padding: 0 max(12px, env(safe-area-inset-right)) 0
+            max(12px, env(safe-area-inset-left));
     }
 
     .site-header .site-nav,
@@ -204,18 +205,19 @@
     }
 
     .logo-link {
-        flex-shrink: 1;
+        flex: 1 1 auto;
+        flex-shrink: 0;
         min-width: 0;
         max-width: calc(100% - 52px);
         height: var(--header-h);
+        overflow: hidden;
     }
 
     .logo-img {
         display: block;
+        height: var(--header-h);
         width: auto;
         max-width: 100%;
-        height: auto;
-        max-height: var(--header-h);
         aspect-ratio: var(--logo-aspect);
         object-fit: contain;
         object-position: left center;
@@ -495,59 +497,68 @@
     }
 
     .tmm-stats {
-        grid-template-columns: 1fr;
-        gap: 10px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
     }
 
     .tmm-stat {
         min-height: unset;
-        padding: 14px 12px;
-        border-radius: 18px;
+        padding: 12px 4px 10px;
+        border-radius: 16px;
     }
 
     .tmm-stat-icon {
-        width: 34px;
-        height: 34px;
-        margin-bottom: 10px;
+        width: 30px;
+        height: 30px;
+        margin-bottom: 8px;
+    }
+
+    .tmm-stat-icon::before {
+        font-size: 1rem;
     }
 
     .tmm-stat-val {
-        font-size: clamp(1.05rem, 5vw, 1.35rem);
+        font-size: clamp(0.82rem, 3.6vw, 1.1rem);
     }
 
     .tmm-stat:nth-child(3) .tmm-stat-val {
-        font-size: clamp(0.95rem, 4.5vw, 1.2rem);
+        font-size: clamp(0.72rem, 3.2vw, 0.95rem);
     }
 
     .tmm-stat-lab {
-        font-size: 0.48rem;
-        letter-spacing: 0.08em;
-        margin-top: 6px;
+        font-size: clamp(0.36rem, 1.2vw, 0.44rem);
+        letter-spacing: 0.06em;
+        margin-top: 5px;
+        line-height: 1.2;
     }
 
     .tmm-foot {
-        grid-template-columns: 1fr 48px 48px;
-        grid-template-rows: auto auto;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
         gap: 10px;
         padding: 12px 16px max(14px, env(safe-area-inset-bottom));
     }
 
+    .tmm-nav {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        order: 2;
+    }
+
     .tmm-cta {
-        grid-column: 1 / -1;
-        grid-row: 1;
+        order: 1;
+        width: 100%;
         min-height: 46px;
         font-size: 0.58rem;
         border-radius: 14px;
     }
 
-    #teamMemberPrev {
-        grid-column: 2;
-        grid-row: 2;
-    }
-
+    #teamMemberPrev,
     #teamMemberNext {
-        grid-column: 3;
-        grid-row: 2;
+        grid-column: auto;
+        grid-row: auto;
     }
 
     .tmm-nav-btn {
