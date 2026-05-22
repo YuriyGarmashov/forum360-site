@@ -468,9 +468,17 @@
         border-radius: 24px;
     }
 
+    .modal--team-member .tmm-panel {
+        --tmm-close-size: 40px;
+        --tmm-close-inset: 14px;
+        --tmm-close-gap: 10px;
+    }
+
     .tmm-head {
         min-height: 0;
-        padding: 18px 52px 14px 16px;
+        padding: 18px
+            calc(var(--tmm-close-inset) + var(--tmm-close-size) + var(--tmm-close-gap))
+            14px 16px;
         margin-bottom: 0;
     }
 

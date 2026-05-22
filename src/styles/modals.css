@@ -88,6 +88,9 @@
 }
 
 .modal--team-member .tmm-panel {
+    --tmm-close-size: 44px;
+    --tmm-close-inset: 18px;
+    --tmm-close-gap: 12px;
     position: relative;
     z-index: 1;
     width: min(420px, calc(100dvw - 24px));
@@ -111,11 +114,11 @@
 
 .modal--team-member .tmm-close {
     position: absolute;
-    top: 18px;
-    right: 18px;
+    top: var(--tmm-close-inset);
+    right: var(--tmm-close-inset);
     z-index: 5;
-    width: 44px;
-    height: 44px;
+    width: var(--tmm-close-size);
+    height: var(--tmm-close-size);
     border: none;
     border-radius: 50%;
     background: #fff;
@@ -138,7 +141,9 @@
     display: block;
     flex-shrink: 0;
     min-height: 0;
-    padding: 20px 54px 16px 20px;
+    padding: 20px
+        calc(var(--tmm-close-inset) + var(--tmm-close-size) + var(--tmm-close-gap))
+        16px 20px;
     border-bottom: 1px solid rgba(34, 36, 38, 0.12);
     margin-bottom: 0;
     background: #eaeaea;
@@ -176,6 +181,9 @@
     letter-spacing: -0.035em;
     color: #222426;
     margin: 0;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    text-wrap: balance;
 }
 
 .tmm-role {
