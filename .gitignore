@@ -1,3 +1,7 @@
+node_modules/
+dist/
+public/assets/
+test-results/
 *.zip
 Thumbs.db
 .DS_Store

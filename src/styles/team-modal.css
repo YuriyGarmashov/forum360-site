@@ -1,0 +1,19 @@
+/* Team member modal — token-aligned overrides */
+.modal--team-member .tmm-panel {
+  background: var(--bg);
+  border-radius: var(--radius-xl);
+}
+
+.modal--team-member .tmm-close:hover,
+.modal--team-member .tmm-cta:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.tmm-name {
+  color: var(--dark);
+}
+
+.tmm-role {
+  color: var(--accent);
+}

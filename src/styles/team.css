@@ -1,0 +1,465 @@
+/* Team */
+.team-section {
+    --team-head-offset: clamp(92px, 10vh, 128px);
+    --team-safe-bottom: 24px;
+}
+
+@media (min-width: 1025px) {
+    .team-section {
+        display: flex;
+        flex-direction: column;
+        min-height: min(calc(100svh - var(--header-h)), 920px);
+    }
+
+    .team-section .team-wrapper {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: calc(
+            100svh - var(--header-h) - var(--team-head-offset) - 32px
+        );
+        padding: clamp(0px, 0.6vh, 10px) 0;
+    }
+}
+
+.team-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 0 0 clamp(14px, 2.8vh, 32px);
+    --team-tooltip-w: clamp(210px, 20vw, 320px);
+    --team-tooltip-gap: clamp(8px, 1.2vw, 18px);
+    --team-circle-safe: min(
+        calc(100dvw - var(--team-tooltip-w) - var(--team-tooltip-gap) - 80px),
+        calc(
+            100svh - var(--header-h) - var(--team-head-offset) -
+                var(--team-safe-bottom)
+        )
+    );
+}
+
+.circle-container {
+    position: relative;
+    width: min(
+        clamp(640px, min(58vw, 64svh), 940px),
+        max(400px, var(--team-circle-safe))
+    );
+    aspect-ratio: 1 / 1;
+    overflow: visible;
+    isolation: isolate;
+}
+
+/* Четыре авторские четверти, извлеченные из команда_1 свг.svg */
+.team-quarter {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    --quarter-x: 0px;
+    --quarter-y: 0px;
+    transition:
+        transform 460ms cubic-bezier(0.22, 1, 0.36, 1),
+        filter 460ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+}
+
+.team-quarter.is-hover {
+    z-index: 10;
+    transform: translate3d(var(--quarter-x), var(--quarter-y), 0) scale(1.035);
+    filter: drop-shadow(0 18px 34px rgba(34, 36, 38, 0.24));
+}
+
+.team-quarter[data-member="ekaterina"] {
+    --quarter-x: clamp(-26px, -3.2vw, -16px);
+    --quarter-y: clamp(-26px, -3.2vw, -16px);
+}
+
+.team-quarter[data-member="marina"] {
+    --quarter-x: clamp(16px, 3.2vw, 26px);
+    --quarter-y: clamp(-26px, -3.2vw, -16px);
+}
+
+.team-quarter[data-member="lyubov"] {
+    --quarter-x: clamp(-26px, -3.2vw, -16px);
+    --quarter-y: clamp(16px, 3.2vw, 26px);
+}
+
+.team-quarter[data-member="anastasia"] {
+    --quarter-x: clamp(16px, 3.2vw, 26px);
+    --quarter-y: clamp(16px, 3.2vw, 26px);
+}
+
+.team-quarter__svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    pointer-events: none;
+}
+
+.team-circle-center {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    pointer-events: none;
+}
+
+.team-circle-hits {
+    position: absolute;
+    inset: 0;
+    z-index: 50;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.team-circle-hits path {
+    fill: rgba(255, 255, 255, 0.001);
+    stroke: none;
+    cursor: pointer;
+    pointer-events: fill;
+    outline: none;
+}
+
+.team-circle-hits path:focus-visible {
+    stroke: var(--accent);
+    stroke-width: 3;
+    stroke-linejoin: round;
+}
+
+/* Толтип за пределами круга: absolute от .circle-container, выезжает в сторону */
+.tooltip.tooltip--in-circle {
+    position: absolute;
+    box-sizing: border-box;
+    width: var(--team-tooltip-w);
+    max-height: min(62vh, 500px);
+    overflow: hidden;
+    margin: 0;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    background: #fff;
+    border: 2px solid var(--accent);
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 10px 10px 0 rgba(109, 12, 50, 0.1);
+    pointer-events: none;
+    z-index: 55;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(0);
+    transition:
+        opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        visibility 0s linear 0.4s;
+}
+
+.tooltip.tooltip--in-circle.is-active {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s, 0s, 0s;
+    pointer-events: auto;
+}
+
+.tooltip:not(.is-active) .tooltip-name,
+.tooltip:not(.is-active) .tooltip-role {
+    visibility: hidden;
+}
+
+.tooltip.tooltip--in-circle.tooltip--pos-ekaterina {
+    right: calc(100% + var(--team-tooltip-gap));
+    top: 10%;
+    transform: translateX(12px);
+}
+
+.tooltip.tooltip--in-circle.tooltip--pos-ekaterina.is-active {
+    transform: translateX(0);
+}
+
+.tooltip.tooltip--in-circle.tooltip--pos-marina {
+    left: calc(100% + var(--team-tooltip-gap));
+    top: 10%;
+    transform: translateX(-12px);
+}
+
+.tooltip.tooltip--in-circle.tooltip--pos-marina.is-active {
+    transform: translateX(0);
+}
+
+.tooltip.tooltip--in-circle.tooltip--pos-lyubov {
+    right: calc(100% + var(--team-tooltip-gap));
+    bottom: 10%;
+    transform: translateX(12px);
+}
+
+.tooltip.tooltip--in-circle.tooltip--pos-lyubov.is-active {
+    transform: translateX(0);
+}
+
+.tooltip.tooltip--in-circle.tooltip--pos-anastasia {
+    left: calc(100% + var(--team-tooltip-gap));
+    bottom: 10%;
+    transform: translateX(-12px);
+}
+
+.tooltip.tooltip--in-circle.tooltip--pos-anastasia.is-active {
+    transform: translateX(0);
+}
+
+.tooltip-name {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+    letter-spacing: 0.015em;
+    word-spacing: -0.035em;
+}
+
+
+.tooltip-role {
+    display: block;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    opacity: 0.65;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0.65rem;
+    margin-bottom: 0.75rem;
+}
+
+.tooltip-body {
+    font-size: 0.82rem;
+    margin-bottom: 1rem;
+    min-height: 0;
+    overflow: auto;
+    flex: 1 1 auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: 1.55;
+    text-wrap: pretty;
+}
+
+.tooltip-body p {
+    margin: 0 0 0.75rem;
+}
+
+.tooltip-body p:last-child {
+    margin-bottom: 0;
+}
+
+.tooltip--expanded .tooltip-body {
+    min-height: 0;
+    margin-bottom: 0.6rem;
+    max-height: min(48vh, 360px);
+    overflow: auto;
+    padding-right: 0.2rem;
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+.tooltip.tooltip--in-circle.tooltip--expanded.is-active {
+    overflow-y: auto;
+    max-height: min(72vh, 520px);
+}
+
+.tooltip--expanded .tooltip-stats {
+    display: none;
+}
+
+.tooltip--expanded .tooltip-more-wrap {
+    margin-top: 0.55rem;
+    padding-top: 0.55rem;
+    flex-shrink: 0;
+}
+
+.tooltip-list {
+    margin: 0 0 0.9rem;
+    padding-left: 1.1rem;
+    display: grid;
+    gap: 0.35rem;
+}
+
+.tooltip-list li {
+    line-height: 1.45;
+    opacity: 0.9;
+}
+
+.tooltip-kicker {
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin: 0 0 0.35rem;
+}
+
+.tooltip-stats {
+    flex-shrink: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem 0.65rem;
+    border-top: 1px solid var(--line);
+    padding-top: 0.75rem;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-width: 0;
+}
+
+.stat-val {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    white-space: nowrap;
+    line-height: 1.15;
+}
+
+.stat-lab {
+    display: block;
+    font-size: 0.52rem;
+    text-transform: uppercase;
+    opacity: 0.55;
+    letter-spacing: 0.04em;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    text-wrap: balance;
+    line-height: 1.2;
+    margin-top: 0.2rem;
+}
+
+.tooltip-more-wrap {
+    flex-shrink: 0;
+    margin-top: 0.65rem;
+    padding-top: 0.65rem;
+    border-top: 1px solid var(--line);
+}
+
+.tooltip-more-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.45rem 0.5rem;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(109, 12, 50, 0.06);
+    border: 1px solid rgba(109, 12, 50, 0.25);
+    cursor: pointer;
+    transition:
+        background 0.2s,
+        border-color 0.2s;
+}
+
+.tooltip-more-btn:hover {
+    background: rgba(109, 12, 50, 0.1);
+    border-color: var(--accent);
+}
+
+.tooltip--expanded .tooltip-more-btn {
+    background: rgba(109, 12, 50, 0.12);
+    border-color: var(--accent);
+}
+
+@media (min-width: 1025px) and (max-width: 1240px) {
+    .team-wrapper {
+        padding-top: 1rem;
+        --team-tooltip-w: clamp(205px, 21vw, 285px);
+        --team-tooltip-gap: clamp(6px, 0.9vw, 12px);
+    }
+
+    .tooltip.tooltip--in-circle {
+        max-height: min(64vh, 440px);
+        padding: 0.85rem 0.95rem;
+        box-shadow: 8px 8px 0 rgba(109, 12, 50, 0.1);
+    }
+
+    .tooltip.tooltip--in-circle.tooltip--pos-ekaterina,
+    .tooltip.tooltip--in-circle.tooltip--pos-marina {
+        top: 7%;
+    }
+
+    .tooltip.tooltip--in-circle.tooltip--pos-lyubov,
+    .tooltip.tooltip--in-circle.tooltip--pos-anastasia {
+        bottom: 7%;
+    }
+
+    .tooltip-name {
+        font-size: clamp(0.94rem, 1.7vw, 1.04rem);
+        line-height: 1.12;
+        margin-bottom: 0.16rem;
+    }
+
+    .tooltip-role {
+        font-size: 0.56rem;
+        line-height: 1.35;
+        padding-bottom: 0.45rem;
+        margin-bottom: 0.52rem;
+    }
+
+    .tooltip-body {
+        max-height: min(28vh, 210px);
+        padding-right: 0.2rem;
+        margin-bottom: 0.55rem;
+        font-size: 0.74rem;
+        line-height: 1.38;
+    }
+
+    .tooltip-body p {
+        margin-bottom: 0.48rem;
+    }
+
+    .tooltip-stats {
+        gap: 0.35rem;
+        padding-top: 0.5rem;
+    }
+
+    .stat-val {
+        font-size: 0.84rem;
+        line-height: 1.1;
+    }
+
+    .stat-lab {
+        font-size: 0.43rem;
+        letter-spacing: 0.03em;
+        line-height: 1.12;
+    }
+
+    .tooltip-more-wrap {
+        margin-top: 0.45rem;
+        padding-top: 0.45rem;
+    }
+
+    .tooltip-more-btn {
+        min-height: 34px;
+        font-size: 0.52rem;
+    }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+        opacity 420ms ease,
+        transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
