@@ -456,7 +456,8 @@
 }
 
 .modal-viewport.is-loading .modal-gallery-img {
-    opacity: 0.08;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .modal-nav {

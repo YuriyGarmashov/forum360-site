@@ -56,6 +56,10 @@ export function Modal({
 
     document.addEventListener("keydown", onKey);
     const t = window.setTimeout(() => {
+      const isCoarseTouch = window.matchMedia(
+        "(hover: none) and (pointer: coarse)",
+      ).matches;
+      if (isCoarseTouch) return;
       const closeBtn = panelRef.current?.querySelector<HTMLElement>(
         `[${closeDataAttr}]`,
       );

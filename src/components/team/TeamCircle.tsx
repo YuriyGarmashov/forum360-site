@@ -65,7 +65,7 @@ export function TeamCircle() {
               key={member}
               data-member={member}
               d={d}
-              tabIndex={0}
+              tabIndex={team.isTouchTeamMode ? -1 : 0}
               role="button"
               aria-label={data ? `${data.name} — ${data.role}` : member}
               onPointerEnter={() => {

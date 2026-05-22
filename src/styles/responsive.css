@@ -334,12 +334,12 @@
         padding-right: 16px;
     }
 
-    .modal {
+    .modal:not(.modal--team-member) {
         padding: 0;
         align-items: stretch;
     }
 
-    .modal-panel {
+    .modal:not(.modal--team-member) .modal-panel {
         max-width: 100%;
         width: 100%;
         max-height: 100dvh;
