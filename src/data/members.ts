@@ -1,4 +1,5 @@
 import type { Member, MemberId } from "@/types/member";
+import { assetUrl } from "@/lib/assetUrl";
 
 export const MEMBER_ORDER: MemberId[] = [
   "ekaterina",
@@ -11,7 +12,7 @@ export const members: Record<MemberId, Member> = {
   ekaterina: {
     name: "Екатерина Алмаз",
     role: "Исполнительный директор",
-    photo: "/assets/team/photos/1_ekaterina.png",
+    photo: assetUrl("assets/team/photos/1_ekaterina.png"),
     desc: "Следит за всеми глобальными процессами компании, обеспечивает финансирование проектов, порой не спит ночами, чтобы Заказчик был доволен проектом.",
     s1: "6 лет",
     s2: "56",
@@ -34,7 +35,7 @@ export const members: Record<MemberId, Member> = {
   marina: {
     name: "Марина Плеханова",
     role: "Руководитель тендерного отдела",
-    photo: "/assets/team/photos/2_marina.png",
+    photo: assetUrl("assets/team/photos/2_marina.png"),
     desc:
       "Мы называем её «счастливой рукой» нашей команды.\n\n" +
       "Увидела, просчитала, выиграла — это точно про Марину.\n\n" +
@@ -51,7 +52,7 @@ export const members: Record<MemberId, Member> = {
   lyubov: {
     name: "Любовь Пасека",
     role: "Руководитель отдела реализации / дизайнер",
-    photo: "/assets/team/photos/3_lubov.png",
+    photo: assetUrl("assets/team/photos/3_lubov.png"),
     desc: "Сделать макеты за сутки — она готова; найти подход к любому Заказчику — это про неё; творческая изюминка нашей команды.",
     s1: "2 года",
     s2: "800–1000",
@@ -77,7 +78,7 @@ export const members: Record<MemberId, Member> = {
   anastasia: {
     name: "Анастасия Гармашова",
     role: "Руководитель проектного отдела",
-    photo: "/assets/team/photos/4_anastasya.png",
+    photo: assetUrl("assets/team/photos/4_anastasya.png"),
     desc:
       "Контролирует самое важное — сроки и отчётность.\n\n" +
       "Структура во всём — её главный козырь, поэтому проекты реализуются чётко, как часы.\n\n" +

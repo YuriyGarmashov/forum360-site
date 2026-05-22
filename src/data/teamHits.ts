@@ -1,4 +1,5 @@
 import type { MemberId } from "@/types/member";
+import { assetUrl } from "@/lib/assetUrl";
 
 export const TEAM_HIT_PATHS: { member: MemberId; d: string }[] = [
   {
@@ -24,13 +25,19 @@ export const QUARTER_ASSETS: Record<
   { src: string; label: string }
 > = {
   ekaterina: {
-    src: "/assets/team/quarter-ekaterina.svg",
+    src: assetUrl("assets/team/quarter-ekaterina.svg"),
     label: "Екатерина Алмаз",
   },
-  marina: { src: "/assets/team/quarter-marina.svg", label: "Марина Плеханова" },
-  lyubov: { src: "/assets/team/quarter-lyubov.svg", label: "Любовь Пасека" },
+  marina: {
+    src: assetUrl("assets/team/quarter-marina.svg"),
+    label: "Марина Плеханова",
+  },
+  lyubov: {
+    src: assetUrl("assets/team/quarter-lyubov.svg"),
+    label: "Любовь Пасека",
+  },
   anastasia: {
-    src: "/assets/team/quarter-anastasia.svg",
+    src: assetUrl("assets/team/quarter-anastasia.svg"),
     label: "Анастасия Гармашова",
   },
 };

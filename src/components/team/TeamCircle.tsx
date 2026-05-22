@@ -1,4 +1,5 @@
 import { QUARTER_ASSETS, TEAM_HIT_PATHS } from "@/data/teamHits";
+import { assetUrl } from "@/lib/assetUrl";
 import { members } from "@/data/members";
 import { useTeamInteraction } from "@/hooks/useTeamInteraction";
 import { TeamTooltip } from "@/components/team/TeamTooltip";
@@ -44,7 +45,7 @@ export function TeamCircle() {
       ))}
       <img
         className="team-circle-center"
-        src="/assets/team/team-center.svg"
+        src={assetUrl("assets/team/team-center.svg")}
         alt=""
         width={1000}
         height={1000}

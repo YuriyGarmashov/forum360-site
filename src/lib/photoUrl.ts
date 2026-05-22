@@ -1,7 +1,8 @@
 import type { CaseId } from "@/types/case";
 import { CASE_PHOTOS } from "@/data/casePhotos";
+import { assetUrl } from "@/lib/assetUrl";
 
-const PHOTO_ROOT = "/assets/cases";
+const PHOTO_ROOT = assetUrl("assets/cases");
 const PHOTO_VERSION = "20260521";
 
 export function photoUrl(folder: string, file: string): string {
