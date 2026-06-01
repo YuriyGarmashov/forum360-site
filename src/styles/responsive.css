@@ -120,7 +120,7 @@
 
     .modal-viewport {
         min-height: clamp(200px, 38vh, 440px);
-        padding: 12px 48px;
+        padding: 12px 40px;
     }
 
     .modal-gallery-img {
@@ -355,7 +355,7 @@
 
     .modal-viewport {
         min-height: 32vh;
-        padding: 10px 44px;
+        padding: 10px 36px;
     }
 
     .modal-gallery-img {
@@ -363,22 +363,39 @@
     }
 
     .modal-nav {
-        width: 40px;
-        height: 40px;
-        font-size: 1.35rem;
+        width: 28px;
+        height: 28px;
+        font-size: 1rem;
     }
 
     .modal-nav--prev {
-        left: 6px;
+        left: 4px;
     }
 
     .modal-nav--next {
-        right: 6px;
+        right: 4px;
     }
 
     .modal-aside {
         max-height: none;
         padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    }
+
+    .modal-aside.is-detail-open .modal-title {
+        font-size: clamp(0.54rem, 2.8vw, 0.62rem);
+        line-height: 1.4;
+        padding: 0.45rem 0.55rem;
+    }
+
+    .modal-aside.is-detail-open .modal-meta {
+        font-size: 0.5rem;
+    }
+
+    .modal-aside .modal-detail-btn,
+    .modal-aside .modal-eis.btn {
+        min-height: 34px;
+        padding: 0.4rem 0.65rem;
+        font-size: 0.5rem;
     }
 
     .modal-gallery-hint {

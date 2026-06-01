@@ -4,6 +4,7 @@ export type Case = {
   title: string;
   meta: string;
   body: string;
+  bodyDetail: string;
   eis: string;
 };
 

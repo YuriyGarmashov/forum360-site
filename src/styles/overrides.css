@@ -8,6 +8,12 @@ body {
   overflow-x: clip;
 }
 
+html.is-scroll-locked,
+body.is-scroll-locked {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
 .main {
   overflow-x: clip;
   max-width: 100%;

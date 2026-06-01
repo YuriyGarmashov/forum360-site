@@ -14,6 +14,13 @@ function copyDir(src, dest) {
   }
 }
 
+function replaceDir(src, dest) {
+  if (fs.existsSync(dest)) {
+    fs.rmSync(dest, { recursive: true, force: true });
+  }
+  copyDir(src, dest);
+}
+
 function isNewer(src, dest) {
   if (!fs.existsSync(dest)) return true;
   try {
@@ -33,25 +40,43 @@ function shouldCopyAssets() {
 }
 
 const mappings = [
-  ["assets", "public/assets"],
-  ["Фото для кейсов/4 семинара", "public/assets/cases/seminars-4"],
-  ["Фото для кейсов/2 семинара", "public/assets/cases/seminars-2"],
-  ["Фото для кейсов/Туризм", "public/assets/cases/tourism"],
-  ["Фото для кейсов/Молодой город", "public/assets/cases/molodoy-city"],
-  ["Элементы круга/png", "public/assets/team/photos"],
+  ["assets", "public/assets", "merge"],
+  ["Фото для кейсов/4 семинара", "public/assets/cases/seminars-4", "replace"],
+  ["Фото для кейсов/2 семинара", "public/assets/cases/seminars-2", "replace"],
+  ["Фото для кейсов/Туризм", "public/assets/cases/tourism", "replace"],
+  ["Фото для кейсов/Молодой город", "public/assets/cases/molodoy-city", "replace"],
+  ["Элементы круга/png", "public/assets/team/photos", "merge"],
+];
+
+const fileCopies = [
+  ["znachok-02.svg", "public/favicon.svg"],
+  ["znachok_4x.png", "public/favicon.png"],
 ];
 
 if (!shouldCopyAssets()) {
   console.log("assets up to date — skip copy (set FORCE_COPY_ASSETS=1 to refresh)");
 } else {
-  for (const [srcRel, destRel] of mappings) {
+  for (const [srcRel, destRel, mode] of mappings) {
     const src = path.join(root, srcRel);
     const dest = path.join(root, destRel);
     if (!fs.existsSync(src)) {
       console.warn("skip (missing):", srcRel);
       continue;
     }
-    copyDir(src, dest);
+    if (mode === "replace") replaceDir(src, dest);
+    else copyDir(src, dest);
+    console.log("copied:", srcRel, "->", destRel);
+  }
+
+  for (const [srcRel, destRel] of fileCopies) {
+    const src = path.join(root, srcRel);
+    const dest = path.join(root, destRel);
+    if (!fs.existsSync(src)) {
+      console.warn("skip (missing):", srcRel);
+      continue;
+    }
+    fs.mkdirSync(path.dirname(dest), { recursive: true });
+    fs.copyFileSync(src, dest);
     console.log("copied:", srcRel, "->", destRel);
   }
 }

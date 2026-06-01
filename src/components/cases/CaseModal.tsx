@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cases } from "@/data/cases";
 import { useCaseGallery } from "@/hooks/useCaseGallery";
 import { useModal } from "@/context/modalContext";
@@ -11,9 +11,14 @@ export function CaseModal() {
   const c = caseId ? cases[caseId] : null;
   const gallery = useCaseGallery(caseId, c?.title ?? "");
   const touchStartX = useRef<number | null>(null);
+  const [detailOpen, setDetailOpen] = useState(false);
 
   const stepRef = useRef(gallery.step);
   stepRef.current = gallery.step;
+
+  useEffect(() => {
+    setDetailOpen(false);
+  }, [caseId]);
 
   useEffect(() => {
     if (!open) return;
@@ -33,13 +38,17 @@ export function CaseModal() {
 
   if (!open || !caseId || !c) return null;
 
+  const bodyHtml = detailOpen ? c.bodyDetail : c.body;
+  const showBody = Boolean(bodyHtml);
+  const showDetailToggle = Boolean(c.bodyDetail);
+
   return (
     <Modal
       open={open}
       onClose={closeCase}
       labelledBy="modalTitle"
       className="modal"
-      panelClassName="modal-panel"
+      panelClassName={`modal-panel${detailOpen ? " is-detail-open" : ""}`}
     >
       <button
         type="button"
@@ -101,23 +110,41 @@ export function CaseModal() {
             <span className="modal-gallery-hint">← → · свайп</span>
           </div>
         </div>
-        <div className="modal-aside">
-          <h2 className="modal-title" id="modalTitle">
-            {c.title}
-          </h2>
-          <p className="modal-meta mono">{c.meta}</p>
-          <div
-            className="modal-body"
-            dangerouslySetInnerHTML={{ __html: c.body }}
-          />
-          <a
-            className="btn btn--primary modal-eis"
-            href={c.eis}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Открыть в ЕИС
-          </a>
+        <div
+          className={`modal-aside${detailOpen ? " is-detail-open" : ""}`}
+        >
+          <div className="modal-aside-head">
+            <h2 className="modal-title" id="modalTitle">
+              {c.title}
+            </h2>
+            <p className="modal-meta mono">{c.meta}</p>
+          </div>
+          {showBody ? (
+            <div
+              className="modal-body"
+              dangerouslySetInnerHTML={{ __html: bodyHtml }}
+            />
+          ) : null}
+          <div className="modal-aside-actions">
+            {showDetailToggle ? (
+              <button
+                type="button"
+                className="modal-detail-btn mono"
+                aria-expanded={detailOpen}
+                onClick={() => setDetailOpen((v) => !v)}
+              >
+                {detailOpen ? "Краткое описание" : "Подробнее о проекте"}
+              </button>
+            ) : null}
+            <a
+              className="btn btn--primary modal-eis"
+              href={c.eis}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Открыть в ЕИС
+            </a>
+          </div>
         </div>
       </div>
     </Modal>
