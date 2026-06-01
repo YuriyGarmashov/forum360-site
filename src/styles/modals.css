@@ -627,15 +627,36 @@
 
 .modal-aside.is-detail-open {
     gap: 0.5rem;
+    overflow: hidden;
 }
 
 .modal-aside.is-detail-open .modal-aside-head {
-    position: sticky;
-    top: 0;
+    position: relative;
+    top: auto;
     z-index: 2;
+    flex-shrink: 0;
     margin-bottom: 0.25rem;
     padding-bottom: 0.35rem;
     background: #fff;
+}
+
+.modal-aside.is-detail-open .modal-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+}
+
+.modal-aside.is-detail-open .modal-aside-actions {
+    margin-top: 0;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 3;
+    background: #fff;
+    border-top: 1px solid rgba(34, 36, 38, 0.1);
+    padding-top: 0.5rem;
+    box-shadow: 0 -10px 20px rgba(255, 255, 255, 0.92);
 }
 
 .modal-body {

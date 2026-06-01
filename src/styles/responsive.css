@@ -427,14 +427,20 @@
     }
 
     .modal-aside {
+        display: flex;
+        flex-direction: column;
         min-height: 0;
         max-height: none;
-        overflow-x: hidden;
+        overflow: hidden;
+        padding: 12px 14px 0;
+        gap: 0.55rem;
+    }
+
+    .modal-aside:not(.is-detail-open) {
         overflow-y: auto;
         overscroll-behavior: contain;
         -webkit-overflow-scrolling: touch;
-        padding: 12px 14px 14px;
-        gap: 0.55rem;
+        padding-bottom: 14px;
     }
 
     .modal-aside .modal-title {
@@ -470,12 +476,26 @@
     }
 
     .modal-aside.is-detail-open {
-        padding-bottom: 0;
+        padding: 12px 14px 0;
+    }
+
+    .modal-aside.is-detail-open .modal-aside-head {
+        flex-shrink: 0;
+    }
+
+    .modal-aside.is-detail-open .modal-body {
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+        padding-right: 2px;
     }
 
     .modal-aside.is-detail-open .modal-aside-actions {
-        margin-top: 0.5rem;
-        padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+        margin-top: 0;
+        padding: 0.5rem 0 max(0.65rem, env(safe-area-inset-bottom));
     }
 
     .modal-aside.is-detail-open .modal-title {
@@ -493,11 +513,6 @@
 
     .modal-aside.is-detail-open .modal-meta {
         font-size: clamp(0.52rem, 2.3vw, 0.58rem);
-    }
-
-    .modal-aside.is-detail-open .modal-body {
-        flex: 0 1 auto;
-        overflow: visible;
     }
 
     .modal-aside .modal-detail-btn,
