@@ -107,13 +107,9 @@
 
     .modal:not(.modal--team-member) .modal-layout {
         grid-template-columns: 1fr;
-        grid-template-rows: minmax(0, 34svh) minmax(0, 1fr);
+        grid-template-rows: minmax(0, auto) minmax(0, auto);
         min-height: 0;
         max-height: 96dvh;
-    }
-
-    .modal:not(.modal--team-member) .modal-layout.is-detail-open {
-        grid-template-rows: minmax(0, 26svh) minmax(0, 1fr);
     }
 
     .modal-visual {
@@ -123,13 +119,13 @@
     }
 
     .modal-viewport {
-        min-height: 0;
-        max-height: 30svh;
+        min-height: clamp(200px, 38vh, 400px);
+        max-height: none;
         padding: 10px 36px;
     }
 
     .modal-gallery-img {
-        max-height: min(28svh, 420px);
+        max-height: min(38vh, 480px);
     }
 
     .modal-aside {
@@ -354,44 +350,44 @@
         margin: 0;
     }
 
+    .modal:not(.modal--team-member) .modal-panel {
+        overflow-y: auto;
+        overscroll-behavior: contain;
+    }
+
     .modal:not(.modal--team-member) .modal-layout {
         display: flex;
         flex-direction: column;
-        height: 100%;
-        max-height: 100dvh;
+        height: auto;
         min-height: 0;
+        max-height: none;
     }
 
     .modal:not(.modal--team-member) .modal-visual {
         flex: 0 0 auto;
-        max-height: 30svh;
-        min-height: 0;
-    }
-
-    .modal:not(.modal--team-member) .modal-layout.is-detail-open .modal-visual {
-        max-height: 24svh;
+        max-height: none;
     }
 
     .modal-viewport {
-        min-height: 0;
-        max-height: 26svh;
-        padding: 8px 32px;
+        min-height: clamp(220px, 42vh, 440px);
+        max-height: none;
+        padding: 12px 36px;
     }
 
     .modal:not(.modal--team-member) .modal-layout.is-detail-open .modal-viewport {
-        max-height: 20svh;
+        min-height: clamp(180px, 34vh, 360px);
     }
 
     .modal-gallery-img {
-        max-height: 22svh;
+        max-height: min(42vh, 560px);
     }
 
     .modal:not(.modal--team-member) .modal-layout.is-detail-open .modal-gallery-img {
-        max-height: 18svh;
+        max-height: min(34vh, 440px);
     }
 
     .modal-gallery-toolbar {
-        padding: 0.35rem 0.65rem;
+        padding: 0.4rem 0.75rem;
         font-size: 0.62rem;
     }
 
@@ -410,15 +406,49 @@
     }
 
     .modal-aside {
-        flex: 1 1 auto;
-        min-height: 0;
+        flex: 0 0 auto;
         max-height: none;
-        padding: 10px 12px max(0.65rem, env(safe-area-inset-bottom));
-        gap: 0.45rem;
+        padding: 12px 14px 14px;
+        gap: 0.55rem;
     }
 
     .modal-aside .modal-title {
-        font-size: clamp(0.62rem, 3.1vw, 0.72rem);
+        font-size: clamp(0.82rem, 4.1vw, 0.98rem);
+        font-weight: 800;
+        line-height: 1.2;
+        text-transform: uppercase;
+        letter-spacing: 0.015em;
+        word-spacing: -0.03em;
+        padding: 0;
+        background: none;
+        border: none;
+        border-radius: 0;
+    }
+
+    .modal-aside .modal-meta {
+        font-size: clamp(0.58rem, 2.6vw, 0.66rem);
+        line-height: 1.4;
+        margin-top: 0.35rem;
+    }
+
+    .modal-aside .modal-body {
+        flex: 0 1 auto;
+        min-height: 0;
+        overflow: visible;
+        font-size: 0.86rem;
+        line-height: 1.5;
+    }
+
+    .modal-aside-actions {
+        margin-top: 0;
+    }
+
+    .modal-aside.is-detail-open {
+        padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+    }
+
+    .modal-aside.is-detail-open .modal-title {
+        font-size: clamp(0.56rem, 2.8vw, 0.64rem);
         font-weight: 700;
         line-height: 1.35;
         text-transform: none;
@@ -428,30 +458,15 @@
         background: rgba(109, 12, 50, 0.07);
         border: 1px solid rgba(109, 12, 50, 0.14);
         border-radius: 10px;
-        display: block;
-    }
-
-    .modal-aside .modal-meta {
-        font-size: clamp(0.52rem, 2.4vw, 0.58rem);
-        line-height: 1.35;
-        margin-top: 0.3rem;
-    }
-
-    .modal-aside.is-detail-open .modal-title {
-        font-size: clamp(0.56rem, 2.8vw, 0.64rem);
-        line-height: 1.4;
-        padding: 0.4rem 0.5rem;
     }
 
     .modal-aside.is-detail-open .modal-meta {
-        font-size: clamp(0.5rem, 2.2vw, 0.55rem);
+        font-size: clamp(0.52rem, 2.3vw, 0.58rem);
     }
 
-    .modal-aside .modal-body {
-        flex: 1 1 auto;
-        min-height: 0;
-        font-size: 0.84rem;
-        line-height: 1.5;
+    .modal-aside.is-detail-open .modal-body {
+        flex: 0 1 auto;
+        overflow: visible;
     }
 
     .modal-aside .modal-detail-btn,
