@@ -59,7 +59,9 @@ export function CaseModal() {
       >
         ×
       </button>
-      <div className="modal-layout">
+      <div
+        className={`modal-layout${detailOpen ? " is-detail-open" : ""}`}
+      >
         <div className="modal-visual">
           <div
             className={`modal-viewport${gallery.loading ? " is-loading" : ""}`}
