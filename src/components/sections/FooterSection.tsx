@@ -26,8 +26,7 @@ export function FooterSection() {
         <div className="footer-col">
           <h3 className="footer-brand">ФОРУМ 360</h3>
           <p className="footer-desc">
-            Тендерное сопровождение и реализация мероприятий для государственных
-            заказчиков.
+            Организация мероприятий по всей России в рамках 44-ФЗ
           </p>
           <div className="footer-cta">
             {isMobileContact ? (

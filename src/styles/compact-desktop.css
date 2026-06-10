@@ -36,7 +36,7 @@
     .tooltip.tooltip--in-circle {
         max-height: min(64vh, 440px);
         padding: 0.85rem 0.95rem;
-        box-shadow: 8px 8px 0 rgba(109, 12, 50, 0.1);
+        box-shadow: 8px 8px 0 rgba(34, 36, 38, 0.1);
     }
 
     .tooltip.tooltip--in-circle.tooltip--pos-ekaterina,
@@ -127,39 +127,26 @@
     }
 
     .hero {
-        min-height: calc(100svh - var(--header-h));
-        max-height: calc(100svh - var(--header-h));
-        padding: clamp(14px, 1.8vh, 24px) clamp(24px, 5vw, 48px)
-            clamp(14px, 1.6vh, 22px);
+        min-height: 100svh;
+        padding-top: calc(var(--header-h) + clamp(20px, 3vh, 36px));
+        padding-bottom: clamp(20px, 3vh, 32px);
         overflow: hidden;
     }
 
-    .hero-bg-fz {
-        font-size: clamp(5rem, 18vw, 14rem);
+    .hero__inner {
+        min-height: calc(100svh - var(--header-h) - clamp(40px, 8vh, 72px));
     }
 
-    .hero-content {
-        flex: none;
+    .hero__brand {
+        width: min(100%, clamp(440px, 42vw, 680px));
     }
 
-    .hero-spacer,
-    .hero-spacer--bottom {
-        display: none;
-        flex: 0;
+    .hero__tagline {
+        font-size: clamp(1.45rem, 2.25vw, 2rem);
     }
 
-    .hero-cta {
-        margin-top: 1.25rem;
-    }
-
-    .hero-title {
-        font-size: clamp(1.85rem, 4.5vw, 3.2rem);
-        margin-bottom: 1rem;
-    }
-
-    .hero-lead {
-        font-size: 0.98rem;
-        line-height: 1.5;
+    .hero-process {
+        width: min(100%, 660px);
     }
 
     .section {
@@ -240,7 +227,7 @@
     }
 
     .about-panel__visual {
-        border-left: 1px solid var(--line);
+        border-left: 1px solid var(--line-on-dark);
         border-top: none;
         width: auto;
         max-width: none;
@@ -254,7 +241,7 @@
         margin-bottom: 0.65rem;
     }
 
-    .about-panel.is-visible .about-geo__layer--disc {
+    .about-panel.is-visible .about-geo__layer--ring {
         animation:
             about-geo-fade-in 700ms ease 140ms both,
             about-geo-breathe-compact 7s ease-in-out 820ms infinite;
@@ -346,7 +333,7 @@
 
 @media (prefers-reduced-motion: reduce) {
     @media (min-width: 1000px) and (max-height: 700px) {
-        .about-panel.is-visible .about-geo__layer--disc,
+        .about-panel.is-visible .about-geo__layer--ring,
         .about-panel.is-visible .about-geo__layer--core {
             animation-name: about-geo-fade-in;
         }

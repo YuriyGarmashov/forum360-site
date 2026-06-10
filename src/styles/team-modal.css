@@ -1,19 +1,21 @@
 /* Team member modal — token-aligned overrides */
 .modal--team-member .tmm-panel {
-  background: var(--bg);
+  background: var(--surface-dark);
+  color: var(--text-on-dark);
   border-radius: var(--radius-xl);
 }
 
 .modal--team-member .tmm-close:hover,
 .modal--team-member .tmm-cta:hover {
-  background: var(--accent);
-  color: #fff;
+  background: transparent;
+  color: var(--text-on-dark);
 }
 
 .tmm-name {
-  color: var(--dark);
+  color: var(--text-on-dark);
 }
 
 .tmm-role {
-  color: var(--accent);
+  color: var(--text-on-dark);
+  background: rgba(234, 234, 234, 0.08);
 }

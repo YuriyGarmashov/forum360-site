@@ -34,7 +34,7 @@
 
     .about-panel__visual {
         border-left: none;
-        border-top: 1px solid var(--line);
+        border-top: 1px solid rgba(234, 234, 234, 0.14);
         width: 100%;
         max-width: 100%;
         margin-inline: 0;
@@ -137,7 +137,7 @@
 @media (max-width: 880px) {
     :root {
         --sidebar-w: 0px;
-        --header-h: 88px;
+        --header-h: 64px;
     }
 
     .site-header {
@@ -171,8 +171,8 @@
         top: var(--header-h);
         left: 0;
         right: 0;
-        background: rgba(234, 234, 234, 0.98);
-        border-bottom: 1px solid var(--line);
+        background: rgba(34, 36, 38, 0.98);
+        border-bottom: 1px solid var(--line-on-dark);
         padding: 1rem 1.5rem;
         z-index: var(--z-drawer);
         transform: translateY(-100%);
@@ -202,27 +202,8 @@
         align-items: center;
     }
 
-    .hero-bg-fz {
-        opacity: 0.35;
-    }
-
-    .logo-link {
-        flex: 1 1 auto;
-        flex-shrink: 0;
-        min-width: 0;
-        max-width: calc(100% - 52px);
-        height: var(--header-h);
-        overflow: hidden;
-    }
-
-    .logo-img {
-        display: block;
-        height: var(--header-h);
-        width: auto;
-        max-width: 100%;
-        aspect-ratio: var(--logo-aspect);
-        object-fit: contain;
-        object-position: left center;
+    .hero__logo {
+        width: min(100%, calc(100vw - 80px));
     }
 }
 
@@ -269,10 +250,6 @@
 }
 
 @media (max-width: 640px) {
-    .hero-grid-meta {
-        display: none;
-    }
-
     .cases-row {
         grid-template-columns: 1fr;
         gap: 0.5rem;
@@ -293,7 +270,7 @@
 
     .cases-row--data span:first-child {
         font-size: 0.65rem;
-        color: var(--accent);
+        color: var(--text-on-dark);
     }
 
     .footer-main {
@@ -303,32 +280,6 @@
     .footer-strip {
         grid-template-columns: 1fr;
         justify-items: start;
-    }
-
-    .hero-cta {
-        flex-direction: column;
-    }
-
-    .hero {
-        min-height: auto;
-        max-height: none;
-        padding: 20px 16px 40px;
-    }
-
-    .hero-content {
-        padding-bottom: 0;
-    }
-
-    .hero-spacer {
-        display: none;
-    }
-
-    .hero-cta {
-        margin-top: 1.5rem;
-    }
-
-    .hero-title {
-        font-size: clamp(1.35rem, 7vw, 2rem);
     }
 
     .section {
@@ -506,8 +457,8 @@
         letter-spacing: 0.01em;
         word-spacing: normal;
         padding: 0.45rem 0.55rem;
-        background: rgba(109, 12, 50, 0.07);
-        border: 1px solid rgba(109, 12, 50, 0.14);
+        background: rgba(234, 234, 234, 0.08);
+        border: 1px solid rgba(234, 234, 234, 0.16);
         border-radius: 10px;
     }
 
@@ -755,4 +706,3 @@
         transform: none;
     }
 }
-

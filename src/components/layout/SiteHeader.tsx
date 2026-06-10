@@ -3,7 +3,6 @@ import { NAV_LINKS } from "@/data/navigation";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { useAnchorScroll } from "@/hooks/useAnchorScroll";
 import { useBodyScrollLock } from "@/hooks/useBodyScrollLock";
-import { HeaderLogo } from "@/components/layout/HeaderLogo";
 import { NavDrawer } from "@/components/layout/NavDrawer";
 
 export function SiteHeader() {
@@ -17,8 +16,9 @@ export function SiteHeader() {
 
   return (
     <>
-      <header className="site-header">
-        <HeaderLogo onClick={handleAnchorClick} />
+      <header
+        className={`site-header${activeSection === "contacts" ? " site-header--on-light" : ""}`}
+      >
         <nav className="site-nav" aria-label="Основная навигация">
           {NAV_LINKS.map((link) => (
             <a

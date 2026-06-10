@@ -33,21 +33,45 @@
 
 /* Header */
 .site-header {
-    position: sticky;
+    position: fixed;
     top: 0;
-    box-sizing: content-box;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
     height: var(--header-h);
     min-height: var(--header-h);
     max-height: var(--header-h);
-    padding: 0 clamp(16px, 4vw, 48px) 0 0;
+    padding: 0 clamp(20px, 5.2vw, 86px);
     display: flex;
     align-items: stretch;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 1rem;
-    border-bottom: 1px solid var(--line);
-    background: rgba(234, 234, 234, 0.92);
-    backdrop-filter: blur(10px);
+    border-bottom: none;
+    background: transparent;
     z-index: var(--z-sticky);
+}
+
+.site-header--on-light .site-nav a {
+    color: rgba(34, 36, 38, 0.65);
+}
+
+.site-header--on-light .site-nav a:hover,
+.site-header--on-light .site-nav a.is-active {
+    color: var(--text-on-light);
+}
+
+.site-header--on-light .site-nav a.is-active::after {
+    background: var(--text-on-light);
+}
+
+.site-header--on-light .nav-toggle {
+    border-color: rgba(34, 36, 38, 0.2);
+    background: transparent;
+}
+
+.site-header--on-light .nav-toggle::before,
+.site-header--on-light .nav-toggle::after {
+    background: var(--text-on-light);
 }
 
 .logo-link {
@@ -75,29 +99,41 @@
 .site-nav {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem 1.75rem;
+    gap: 0.5rem clamp(2rem, 3.6vw, 4.25rem);
     align-items: center;
     align-self: center;
     justify-content: flex-end;
 }
 
 .site-nav a {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-family: var(--font-sans);
+    font-size: clamp(0.95rem, 0.36vw + 0.86rem, 1.12rem);
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
     text-decoration: none;
-    color: var(--dark);
+    color: rgba(234, 234, 234, 0.78);
     transition: color 0.2s;
+    position: relative;
+    padding-bottom: 0.55rem;
 }
 
 .site-nav a:hover {
-    color: var(--accent);
+    color: var(--text-on-dark);
 }
 
 .site-nav a.is-active {
-    color: var(--accent);
+    color: var(--text-on-dark);
+}
+
+.site-nav a.is-active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: var(--text-on-dark);
 }
 
 .nav-toggle {
@@ -105,8 +141,8 @@
     align-self: center;
     width: 44px;
     height: 44px;
-    border: 1px solid var(--line);
-    background: var(--bg);
+    border: 1px solid var(--line-on-dark);
+    background: var(--surface-dark);
     cursor: pointer;
     position: relative;
 }
@@ -118,7 +154,7 @@
     left: 10px;
     right: 10px;
     height: 2px;
-    background: var(--dark);
+    background: var(--text-on-dark);
     transition: transform 0.2s;
 }
 
@@ -146,4 +182,3 @@
 .main {
     margin-left: 0;
 }
-

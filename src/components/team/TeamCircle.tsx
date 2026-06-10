@@ -7,6 +7,10 @@ import type { MemberId } from "@/types/member";
 
 const MEMBER_IDS = Object.keys(QUARTER_ASSETS) as MemberId[];
 
+function isNode(value: EventTarget | null): value is Node {
+  return value instanceof Node;
+}
+
 export function TeamCircle() {
   const team = useTeamInteraction();
 
@@ -18,7 +22,7 @@ export function TeamCircle() {
       aria-label="Команда ФОРУМ 360: четыре руководителя"
       onPointerLeave={(e) => {
         if (team.isTouchTeamMode) return;
-        const related = e.relatedTarget as Node | null;
+        const related = isNode(e.relatedTarget) ? e.relatedTarget : null;
         if (related && e.currentTarget.contains(related)) return;
         const tooltip = e.currentTarget.querySelector(
           ".tooltip.tooltip--in-circle",

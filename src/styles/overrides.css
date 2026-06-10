@@ -160,7 +160,7 @@ body.is-scroll-locked {
 }
 
 .site-nav a.is-active {
-  color: var(--accent);
+  color: var(--text-on-dark);
 }
 
 .skip-link {
@@ -195,7 +195,8 @@ body.is-scroll-locked {
 
 .footer-contact--link:hover,
 .footer-cta a:hover {
-  color: var(--accent);
+  color: var(--surface-light);
+  opacity: 1;
 }
 
 .cases-row--data {

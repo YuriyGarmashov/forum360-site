@@ -8,7 +8,7 @@ type NavDrawerProps = {
 };
 
 export function NavDrawer({ open, onClose, activeSection }: NavDrawerProps) {
-  const { handleAnchorClick } = useAnchorScroll();
+  const { scrollToTarget } = useAnchorScroll();
 
   return (
     <div
@@ -23,8 +23,17 @@ export function NavDrawer({ open, onClose, activeSection }: NavDrawerProps) {
             className={activeSection === link.id ? "is-active" : undefined}
             aria-current={activeSection === link.id ? "true" : undefined}
             onClick={(e) => {
-              handleAnchorClick(e);
+              const hash = e.currentTarget.getAttribute("href");
+              const target = hash
+                ? document.querySelector<HTMLElement>(hash)
+                : null;
+              if (!hash || !target) return;
+              e.preventDefault();
               onClose();
+              window.history.pushState(null, "", hash);
+              window.requestAnimationFrame(() => {
+                window.requestAnimationFrame(() => scrollToTarget(target));
+              });
             }}
           >
             {link.label}

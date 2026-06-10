@@ -1,6 +1,18 @@
 import { useEffect, useState } from "react";
 import { NAV_LINKS } from "@/data/navigation";
 
+const ACTIVE_GAP = 14;
+
+function getHeaderHeight(): number {
+  const header = document.querySelector<HTMLElement>(".site-header");
+  return header?.getBoundingClientRect().height ?? 0;
+}
+
+function getAnchor(section: HTMLElement): HTMLElement {
+  if (section.id === "hero") return section;
+  return section.querySelector<HTMLElement>(".section-head") ?? section;
+}
+
 export function useActiveSection(): string {
   const [active, setActive] = useState("hero");
 
@@ -12,41 +24,55 @@ export function useActiveSection(): string {
 
     if (nodes.length === 0) return;
 
-    if (!("IntersectionObserver" in window)) return;
+    let frame = 0;
 
-    const visible = new Map<string, number>();
+    const updateActive = () => {
+      frame = 0;
 
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const id = entry.target.id;
-          if (!id) return;
-          if (entry.isIntersecting) {
-            visible.set(id, entry.intersectionRatio);
-          } else {
-            visible.delete(id);
-          }
-        });
+      if (window.scrollY <= 2) {
+        setActive("hero");
+        return;
+      }
 
-        if (visible.size === 0) return;
-        let bestId = "hero";
-        let bestRatio = 0;
-        visible.forEach((ratio, id) => {
-          if (ratio >= bestRatio) {
-            bestRatio = ratio;
-            bestId = id;
-          }
-        });
-        setActive(bestId);
-      },
-      {
-        rootMargin: "-20% 0px -55% 0px",
-        threshold: [0, 0.1, 0.25, 0.4, 0.6],
-      },
-    );
+      const doc = document.documentElement;
+      const maxScroll = doc.scrollHeight - window.innerHeight;
+      if (maxScroll - window.scrollY <= 2) {
+        setActive(nodes[nodes.length - 1].id);
+        return;
+      }
 
-    nodes.forEach((node) => io.observe(node));
-    return () => io.disconnect();
+      const marker = getHeaderHeight() + ACTIVE_GAP;
+      let nextId = nodes[0].id;
+      let bestDistance = Number.POSITIVE_INFINITY;
+
+      nodes.forEach((node) => {
+        const anchor = getAnchor(node);
+        const distance = Math.abs(anchor.getBoundingClientRect().top - marker);
+        if (distance < bestDistance) {
+          bestDistance = distance;
+          nextId = node.id;
+        }
+      });
+
+      setActive((current) => (current === nextId ? current : nextId));
+    };
+
+    const scheduleUpdate = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(updateActive);
+    };
+
+    updateActive();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    window.addEventListener("hashchange", scheduleUpdate);
+
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      window.removeEventListener("hashchange", scheduleUpdate);
+    };
   }, []);
 
   return active;

@@ -30,6 +30,10 @@ export const CASE_PHOTOS: Record<CaseId, CasePhotoPack> = {
   },
   molodoy: {
     folder: "molodoy-city",
-    files: Array.from({ length: 33 }, (_, i) => `${i + 1}.webp`),
+    files: [
+      "1.webp",
+      "Письмо.webp",
+      ...Array.from({ length: 32 }, (_, i) => `${i + 2}.webp`),
+    ],
   },
 };

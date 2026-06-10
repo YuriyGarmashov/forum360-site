@@ -1,11 +1,17 @@
 :root {
-  --bg: #eaeaea;
-  --dark: #222426;
-  --accent: #6d0c32;
-  --line: rgba(34, 36, 38, 0.15);
+  --surface-dark: #222426;
+  --surface-light: #eaeaea;
+  --text-on-dark: #eaeaea;
+  --text-on-light: #222426;
+
+  --bg: var(--surface-dark);
+  --dark: var(--surface-dark);
+  --accent: var(--text-on-dark);
+  --line: rgba(234, 234, 234, 0.15);
+  --line-on-dark: rgba(234, 234, 234, 0.15);
 
   --sidebar-w: 0px;
-  --header-h: 100px;
+  --header-h: 72px;
 
   --font-sans:
     "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
@@ -53,7 +59,7 @@
 
   --shadow-sm: 0 2px 8px rgba(34, 36, 38, 0.08);
   --shadow-md: 0 8px 24px rgba(34, 36, 38, 0.12);
-  --shadow-lg: 0 16px 48px rgba(109, 12, 50, 0.15);
+  --shadow-lg: 0 16px 48px rgba(34, 36, 38, 0.15);
 
   --team-tooltip-w: clamp(260px, 28vw, 340px);
   --team-tooltip-gap: clamp(16px, 2vw, 28px);
@@ -63,6 +69,6 @@
 
 @media (max-width: 880px) {
   :root {
-    --header-h: 88px;
+    --header-h: 64px;
   }
 }

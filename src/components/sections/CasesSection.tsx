@@ -1,3 +1,4 @@
+import { CasesSectionDecor } from "@/components/cases/CasesSectionDecor";
 import { CasesTable } from "@/components/cases/CasesTable";
 import { Reveal } from "@/components/ui/Reveal";
 import { useModal } from "@/context/modalContext";
@@ -7,6 +8,7 @@ export function CasesSection() {
 
   return (
     <section className="section cases-section" id="cases" aria-labelledby="cases-title">
+      <CasesSectionDecor />
       <div className="section-head section-head--row">
         <div>
           <span className="section-num mono">03</span>
