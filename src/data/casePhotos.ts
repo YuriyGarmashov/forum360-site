@@ -33,7 +33,11 @@ export const CASE_PHOTOS: Record<CaseId, CasePhotoPack> = {
     files: [
       "1.webp",
       "Письмо.webp",
-      ...Array.from({ length: 32 }, (_, i) => `${i + 2}.webp`),
+      ...Array.from({ length: 6 }, (_, i) => `${i + 6}.webp`),
+      "13.webp",
+      "14.webp",
+      "15.webp",
+      ...Array.from({ length: 17 }, (_, i) => `${i + 17}.webp`),
     ],
   },
 };

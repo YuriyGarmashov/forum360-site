@@ -1,7 +1,7 @@
 /* Cases */
 .cases-section {
     position: relative;
-    background: var(--surface-dark);
+    background: var(--page-bg);
     color: var(--text-on-dark);
     border-bottom-color: var(--line-on-dark);
     overflow: hidden;

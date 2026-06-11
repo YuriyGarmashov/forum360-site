@@ -3,7 +3,7 @@
     --team-head-offset: clamp(92px, 10vh, 128px);
     --team-safe-bottom: 24px;
     position: relative;
-    background: var(--surface-dark);
+    background: var(--page-bg);
     color: var(--text-on-dark);
     border-bottom-color: var(--line-on-dark);
     overflow: hidden;
@@ -134,30 +134,6 @@
     aspect-ratio: 1 / 1;
     overflow: visible;
     isolation: isolate;
-}
-
-.circle-container::before {
-    content: "";
-    position: absolute;
-    inset: -4.5%;
-    z-index: 0;
-    border: 1px solid rgba(234, 234, 234, 0.075);
-    border-radius: 50%;
-    background:
-        radial-gradient(
-            circle at 50% 50%,
-            rgba(234, 234, 234, 0.03),
-            rgba(234, 234, 234, 0) 58%
-        );
-    filter: blur(0.2px);
-    pointer-events: none;
-}
-
-@media (max-width: 640px) {
-    .circle-container::before {
-        inset: -2%;
-        opacity: 0.55;
-    }
 }
 
 /* Четыре авторские четверти, извлеченные из команда_1 свг.svg */

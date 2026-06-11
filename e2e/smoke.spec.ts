@@ -16,6 +16,7 @@ test("hero uses redesigned logo copy and no CTA", async ({ page }) => {
   await expect(page.locator(".site-header")).toBeVisible();
   await expect(page.locator(".hero .btn")).toHaveCount(0);
   await expect(page.locator(".site-header .logo-link")).toHaveCount(0);
+  await expect(page.locator(".hero-process__float--3 text")).toHaveCount(0);
 });
 
 test("about CTA scrolls to cases", async ({ page }) => {
@@ -129,7 +130,7 @@ test("molodoy case shows original letter as second gallery image", async ({
   await expect(page.locator(".modal.is-open")).toBeVisible();
 
   await page.locator(".modal-nav--next").click();
-  await expect(page.locator(".modal-gallery-toolbar")).toContainText("2 / 34");
+  await expect(page.locator(".modal-gallery-toolbar")).toContainText("2 / 28");
 
   const image = page.locator(".modal-gallery-img");
   await expect

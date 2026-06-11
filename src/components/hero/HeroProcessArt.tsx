@@ -91,21 +91,11 @@ export function HeroProcessArt() {
       {/* Support */}
       <g className="hero-process__float hero-process__float--3" filter="url(#heroCardGlow)">
         <rect x="468" y="168" width="212" height="148" rx="6" fill={fill} stroke={strokeSoft} strokeWidth="1" />
-        <circle cx="488" cy="198" r="9" fill="none" stroke={stroke} strokeWidth="1.2" opacity="0.85" />
-        <line x1="488" y1="194" x2="488" y2="198" stroke={stroke} strokeWidth="1.2" />
-        <line x1="488" y1="198" x2="492" y2="201" stroke={stroke} strokeWidth="1.2" />
-        <text x="506" y="202" fill={stroke} fontSize="11" fontFamily="var(--font-mono)" fontWeight="600" letterSpacing="0.08em" opacity="0.78">
-          СОПРОВОЖДЕНИЕ
-        </text>
-        <text x="488" y="232" fill={stroke} fontSize="10" opacity="0.82">
-          • Подача заявки
-        </text>
-        <text x="488" y="252" fill={stroke} fontSize="10" opacity="0.82">
-          • Подписание контракта
-        </text>
-        <text x="488" y="272" fill={stroke} fontSize="10" opacity="0.82">
-          • Контроль сроков
-        </text>
+        <line x1="488" y1="198" x2="624" y2="198" stroke={stroke} strokeWidth="1" opacity="0.22" />
+        <line x1="488" y1="216" x2="646" y2="216" stroke={stroke} strokeWidth="1" opacity="0.18" />
+        <line x1="488" y1="236" x2="612" y2="236" stroke={stroke} strokeWidth="1" opacity="0.16" />
+        <line x1="488" y1="256" x2="636" y2="256" stroke={stroke} strokeWidth="1" opacity="0.14" />
+        <line x1="488" y1="276" x2="592" y2="276" stroke={stroke} strokeWidth="1" opacity="0.12" />
       </g>
 
       {/* Contract execution */}

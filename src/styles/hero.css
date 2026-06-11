@@ -6,7 +6,7 @@
     padding: calc(var(--header-h) + clamp(56px, 9vh, 116px))
         clamp(28px, 5.2vw, 86px) clamp(44px, 7vh, 80px);
     border-bottom: 1px solid var(--line-on-dark);
-    background: var(--surface-dark);
+    background: var(--page-bg);
     color: var(--text-on-dark);
     overflow: hidden;
     box-sizing: border-box;

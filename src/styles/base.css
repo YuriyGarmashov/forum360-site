@@ -25,7 +25,7 @@ body {
             rgba(234, 234, 234, 0.035),
             rgba(234, 234, 234, 0) min(32vw, 520px)
         ),
-        var(--bg);
+        var(--page-bg);
     color: var(--text-on-dark);
     line-height: 1.6;
     overflow-x: hidden;
