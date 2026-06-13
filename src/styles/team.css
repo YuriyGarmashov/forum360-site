@@ -3,22 +3,22 @@
     --team-head-offset: clamp(92px, 10vh, 128px);
     --team-safe-bottom: 24px;
     position: relative;
-    background: var(--page-bg);
-    color: var(--text-on-dark);
-    border-bottom-color: var(--line-on-dark);
+    background: var(--surface-light);
+    color: var(--text-on-light);
+    border-bottom-color: rgba(34, 36, 38, 0.18);
     overflow: hidden;
 }
 
 .team-section .section-num {
-    color: rgba(234, 234, 234, 0.55);
+    color: rgba(34, 36, 38, 0.58);
 }
 
 .team-section .section-title {
-    color: var(--text-on-dark);
+    color: var(--text-on-light);
 }
 
 .team-section .team-tagline {
-    color: rgba(234, 234, 234, 0.88);
+    color: rgba(34, 36, 38, 0.82);
 }
 
 .team-decor {
@@ -32,31 +32,34 @@
     position: absolute;
     width: clamp(80px, 12vw, 140px);
     height: auto;
-    opacity: 0.55;
+    opacity: 0.38;
 }
 
 .team-decor__tl {
     left: clamp(12px, 3.8vw, 70px);
     bottom: clamp(86px, 13vh, 150px);
     width: clamp(180px, 21vw, 320px);
-    opacity: 0.5;
+    opacity: 0.34;
 }
 
 .team-decor__tr {
     top: clamp(48px, 8vh, 120px);
     right: clamp(18px, 5vw, 86px);
     width: clamp(120px, 15vw, 210px);
+    opacity: 0.32;
 }
 
 .team-decor__bl {
     bottom: clamp(18px, 5vh, 70px);
     left: clamp(14px, 4vw, 54px);
+    opacity: 0.34;
 }
 
 .team-decor__br {
     bottom: clamp(32px, 8vh, 100px);
     right: clamp(28px, 5vw, 84px);
     width: clamp(60px, 8vw, 100px);
+    opacity: 0.32;
 }
 
 .team-section .section-head,
@@ -64,6 +67,10 @@
 .team-section .team-wrapper {
     position: relative;
     z-index: 1;
+}
+
+.team-section .section-sub--mobile {
+    color: rgba(34, 36, 38, 0.62);
 }
 
 @media (min-width: 1025px) {
@@ -155,7 +162,7 @@
 .team-quarter.is-hover {
     z-index: 10;
     transform: translate3d(var(--quarter-x), var(--quarter-y), 0) scale(1.035);
-    filter: drop-shadow(0 18px 34px rgba(34, 36, 38, 0.24));
+    filter: drop-shadow(0 18px 30px rgba(34, 36, 38, 0.18));
 }
 
 .team-quarter[data-member="ekaterina"] {
@@ -215,7 +222,7 @@
 }
 
 .team-circle-hits path:focus-visible {
-    stroke: var(--text-on-dark);
+    stroke: var(--text-on-light);
     stroke-width: 3;
     stroke-linejoin: round;
 }
@@ -238,7 +245,9 @@
     padding: 1.1rem 1.25rem;
     display: flex;
     flex-direction: column;
-    box-shadow: 10px 10px 0 rgba(234, 234, 234, 0.08);
+    box-shadow:
+        0 18px 42px rgba(34, 36, 38, 0.16),
+        6px 6px 0 rgba(34, 36, 38, 0.08);
     pointer-events: none;
     z-index: 55;
     opacity: 0;
@@ -477,7 +486,9 @@
     .tooltip.tooltip--in-circle {
         max-height: min(64vh, 440px);
         padding: 0.85rem 0.95rem;
-        box-shadow: 8px 8px 0 rgba(234, 234, 234, 0.08);
+        box-shadow:
+            0 14px 32px rgba(34, 36, 38, 0.15),
+            5px 5px 0 rgba(34, 36, 38, 0.08);
     }
 
     .tooltip.tooltip--in-circle.tooltip--pos-ekaterina,

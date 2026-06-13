@@ -1,43 +1,23 @@
 import type { CaseId, CasePhotoPack } from "@/types/case";
 
+const numbered = (count: number) =>
+  Array.from({ length: count }, (_, i) => `${i + 1}.webp`);
+
 export const CASE_PHOTOS: Record<CaseId, CasePhotoPack> = {
   seminars4: {
     folder: "seminars-4",
-    files: [
-      "1.webp",
-      "2.webp",
-      "3.webp",
-      "4.webp",
-      "5.webp",
-      "6.webp",
-      "7.webp",
-      "10.webp",
-      "11.webp",
-      "12.webp",
-      "13.webp",
-      "14.webp",
-      "15.webp",
-      "16.webp",
-    ],
+    files: numbered(20),
   },
   seminars2: {
     folder: "seminars-2",
-    files: Array.from({ length: 20 }, (_, i) => `${i + 1}.webp`),
+    files: numbered(20),
   },
   tourism: {
     folder: "tourism",
-    files: Array.from({ length: 30 }, (_, i) => `${i + 1}.webp`),
+    files: numbered(25),
   },
   molodoy: {
     folder: "molodoy-city",
-    files: [
-      "1.webp",
-      "Письмо.webp",
-      ...Array.from({ length: 6 }, (_, i) => `${i + 6}.webp`),
-      "13.webp",
-      "14.webp",
-      "15.webp",
-      ...Array.from({ length: 17 }, (_, i) => `${i + 17}.webp`),
-    ],
+    files: numbered(28),
   },
 };

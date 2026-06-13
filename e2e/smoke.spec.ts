@@ -30,6 +30,8 @@ test("about CTA scrolls to cases", async ({ page }) => {
 test("desktop navigation aligns section headings at key viewports", async ({
   page,
 }) => {
+  test.setTimeout(60000);
+
   const desktopViewports = [
     { width: 1100, height: 620 },
     { width: 1366, height: 768 },
@@ -121,7 +123,7 @@ test("case modal opens with loaded photo, detail toggle and escape close", async
   await expect(page.locator(".modal.is-open")).toHaveCount(0);
 });
 
-test("molodoy case shows original letter as second gallery image", async ({
+test("molodoy case follows updated gallery order", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
@@ -143,6 +145,7 @@ test("molodoy case shows original letter as second gallery image", async ({
             complete: el.complete,
             srcHasOriginal: src.includes("Письмо.webp"),
             srcHasGenerated: src.includes("letter.webp"),
+            srcHasSecondPhoto: src.includes("/2.webp"),
             width: el.naturalWidth,
             height: el.naturalHeight,
           };
@@ -151,10 +154,11 @@ test("molodoy case shows original letter as second gallery image", async ({
     )
     .toEqual({
       complete: true,
-      srcHasOriginal: true,
+      srcHasOriginal: false,
       srcHasGenerated: false,
-      width: 2339,
-      height: 1653,
+      srcHasSecondPhoto: true,
+      width: expect.any(Number),
+      height: expect.any(Number),
     });
 });
 

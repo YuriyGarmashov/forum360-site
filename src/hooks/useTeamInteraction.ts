@@ -300,7 +300,7 @@ export function useTeamInteraction() {
     circleClassName: `circle-container${activeMember ? " is-active" : ""}`,
 
     quarterClass: (id: MemberId) =>
-      `team-quarter${!isTouchTeamMode && activeMember === id ? " is-hover" : ""}`,
+      `team-quarter${!isTouchTeamMode && displayMember === id ? " is-hover" : ""}`,
 
   };
 

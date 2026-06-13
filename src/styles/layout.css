@@ -51,6 +51,12 @@
     z-index: var(--z-sticky);
 }
 
+.site-header--on-light {
+    background: rgba(234, 234, 234, 0.94);
+    border-bottom: 1px solid rgba(34, 36, 38, 0.16);
+    backdrop-filter: blur(10px);
+}
+
 .site-header--on-light .site-nav a {
     color: rgba(34, 36, 38, 0.65);
 }

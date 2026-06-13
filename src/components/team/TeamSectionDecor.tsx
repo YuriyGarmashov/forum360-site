@@ -1,5 +1,5 @@
 export function TeamSectionDecor() {
-  const stroke = "#eaeaea";
+  const stroke = "#222426";
 
   return (
     <div className="team-decor" aria-hidden="true">
