@@ -1,8 +1,9 @@
 import { StrictMode, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import App from "@/App";
+import { AdminApp } from "@/admin/AdminApp";
 import "@/styles/globals.css";
-import { warmupCasePhotos } from "@/hooks/useCaseGallery";
+import "@/admin/admin.css";
 
 function ScrollResetOnReload() {
   useEffect(() => {
@@ -26,11 +27,23 @@ function ScrollResetOnReload() {
   return null;
 }
 
+const basePath = import.meta.env.BASE_URL || "/";
+const pathname = window.location.pathname;
+const normalizedPath =
+  basePath !== "/" && pathname.startsWith(basePath)
+    ? pathname.slice(basePath.length - 1)
+    : pathname;
+const isAdminRoute = normalizedPath === "/admin" || normalizedPath.startsWith("/admin/");
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <ScrollResetOnReload />
-    <App />
+    {isAdminRoute ? (
+      <AdminApp />
+    ) : (
+      <>
+        <ScrollResetOnReload />
+        <App />
+      </>
+    )}
   </StrictMode>,
 );
-
-warmupCasePhotos();

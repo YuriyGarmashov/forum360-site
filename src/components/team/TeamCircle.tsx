@@ -1,6 +1,6 @@
 import { QUARTER_ASSETS, TEAM_HIT_PATHS } from "@/data/teamHits";
 import { assetUrl } from "@/lib/assetUrl";
-import { members } from "@/data/members";
+import { useSiteContent } from "@/context/contentContext";
 import { useTeamInteraction } from "@/hooks/useTeamInteraction";
 import { TeamTooltip } from "@/components/team/TeamTooltip";
 import type { MemberId } from "@/types/member";
@@ -13,6 +13,8 @@ function isNode(value: EventTarget | null): value is Node {
 
 export function TeamCircle() {
   const team = useTeamInteraction();
+  const { content } = useSiteContent();
+  const members = content.team.members;
 
   return (
     <div

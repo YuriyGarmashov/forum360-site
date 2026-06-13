@@ -1,9 +1,11 @@
 import { CasesTable } from "@/components/cases/CasesTable";
+import { useSiteContent } from "@/context/contentContext";
 import { useModal } from "@/context/modalContext";
 import { Modal } from "@/components/ui/Modal";
 
 export function ProjectsModal() {
   const { isProjectsOpen, closeProjects } = useModal();
+  const { content } = useSiteContent();
 
   return (
     <Modal
@@ -19,14 +21,14 @@ export function ProjectsModal() {
         type="button"
         className="modal-close mono"
         data-close-projects-modal
-        aria-label="Закрыть"
+        aria-label={content.cases.modalLabels.close}
         onClick={closeProjects}
       >
         ×
       </button>
       <div className="projects-modal-head">
         <h2 className="section-title" id="projectsModalTitle">
-          Все проекты
+          {content.cases.projectsModalTitle}
         </h2>
       </div>
       <div className="projects-modal-body">

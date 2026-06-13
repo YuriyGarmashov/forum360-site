@@ -1,4 +1,4 @@
-export type CaseId = "seminars4" | "seminars2" | "tourism" | "molodoy";
+export type CaseId = string;
 
 export type Case = {
   title: string;
@@ -11,4 +11,10 @@ export type Case = {
 export type CasePhotoPack = {
   folder: string;
   files: string[];
+};
+
+export type CasePhoto = {
+  id: string;
+  src: string;
+  alt?: string;
 };

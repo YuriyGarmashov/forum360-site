@@ -1,4 +1,4 @@
-import { cases } from "@/data/cases";
+import { useSiteContent } from "@/context/contentContext";
 import { useModal } from "@/context/modalContext";
 import type { CaseId } from "@/types/case";
 
@@ -10,7 +10,8 @@ type CaseRowProps = {
 
 export function CaseRow({ caseId, index, variant = "featured" }: CaseRowProps) {
   const { openCase, isProjectsOpen } = useModal();
-  const c = cases[caseId];
+  const { content } = useSiteContent();
+  const c = content.cases.items[caseId];
   if (!c) return null;
 
   const number = String(index + 1).padStart(2, "0");
@@ -52,7 +53,7 @@ export function CaseRow({ caseId, index, variant = "featured" }: CaseRowProps) {
           rel="noopener noreferrer"
           onClick={(e) => e.stopPropagation()}
         >
-          ЕИС
+          {content.cases.tableLabels.eis}
         </a>
       </span>
     </div>

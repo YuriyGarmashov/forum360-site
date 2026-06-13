@@ -1,7 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { CASE_PHOTOS } from "@/data/casePhotos";
-import { buildGalleryUrls } from "@/lib/photoUrl";
-import type { CaseId } from "@/types/case";
+import type { CaseId, CasePhoto } from "@/types/case";
 
 const preloadCache = new Set<string>();
 
@@ -13,8 +11,13 @@ function preloadImage(url: string) {
   img.src = url;
 }
 
-export function useCaseGallery(caseId: CaseId | null, title: string) {
+export function useCaseGallery(
+  caseId: CaseId | null,
+  title: string,
+  photos: CasePhoto[] = [],
+) {
   const [urls, setUrls] = useState<string[]>([]);
+  const [alts, setAlts] = useState<string[]>([]);
   const [index, setIndex] = useState(0);
   const [loading, setLoading] = useState(false);
   const [src, setSrc] = useState("");
@@ -23,16 +26,17 @@ export function useCaseGallery(caseId: CaseId | null, title: string) {
   useEffect(() => {
     if (!caseId) {
       setUrls([]);
+      setAlts([]);
       setIndex(0);
       setSrc("");
       setLoading(false);
       return;
     }
-    const nextUrls = buildGalleryUrls(caseId);
-    setUrls(nextUrls);
+    setUrls(photos.map((photo) => photo.src).filter(Boolean));
+    setAlts(photos.map((photo) => photo.alt ?? ""));
     setIndex(0);
     requestIdRef.current += 1;
-  }, [caseId]);
+  }, [caseId, photos]);
 
   const updateView = useCallback(() => {
     const n = urls.length;
@@ -78,30 +82,13 @@ export function useCaseGallery(caseId: CaseId | null, title: string) {
     [urls.length],
   );
 
+  const normalized =
+    urls.length > 0 ? ((index % urls.length) + urls.length) % urls.length : 0;
   const alt =
     urls.length > 0
-      ? `${title} — фото ${(((index % urls.length) + urls.length) % urls.length) + 1} из ${urls.length}`
+      ? alts[normalized] || `${title} — фото ${normalized + 1} из ${urls.length}`
       : "";
-
-  const countLabel =
-    urls.length > 0
-      ? `${(((index % urls.length) + urls.length) % urls.length) + 1} / ${urls.length}`
-      : "";
+  const countLabel = urls.length > 0 ? `${normalized + 1} / ${urls.length}` : "";
 
   return { urls, index, step, loading, src, alt, countLabel };
-}
-
-export function warmupCasePhotos(): void {
-  (Object.keys(CASE_PHOTOS) as CaseId[]).forEach((caseId) => {
-    const urls = buildGalleryUrls(caseId);
-    urls.slice(0, 4).forEach(preloadImage);
-    if (urls.length > 4) {
-      const defer = () => urls.slice(4).forEach(preloadImage);
-      if ("requestIdleCallback" in window) {
-        window.requestIdleCallback(defer, { timeout: 2500 });
-      } else {
-        setTimeout(defer, 1200);
-      }
-    }
-  });
 }

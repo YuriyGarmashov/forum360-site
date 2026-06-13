@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { MEMBER_ORDER, members } from "@/data/members";
-import { descToHtml, experienceToHtml } from "@/lib/html";
-import { useModal } from "@/context/modalContext";
 import { Modal } from "@/components/ui/Modal";
+import { useSiteContent } from "@/context/contentContext";
+import { useModal } from "@/context/modalContext";
+import { descToHtml, experienceToHtml } from "@/lib/html";
 
 export function TeamMemberModal() {
   const { state, closeTeamMember, openTeamMember } = useModal();
+  const { content } = useSiteContent();
   const open = state.type === "team";
   const memberId = open ? state.memberId : null;
   const [detailOpen, setDetailOpen] = useState(false);
@@ -16,7 +17,7 @@ export function TeamMemberModal() {
     scrollRef.current?.scrollTo({ top: 0, behavior: "instant" });
   }, [memberId]);
 
-  const data = memberId ? members[memberId] : null;
+  const data = memberId ? content.team.members[memberId] : null;
   if (!open || !memberId || !data) return null;
 
   const descHtml = detailOpen
@@ -24,9 +25,13 @@ export function TeamMemberModal() {
     : descToHtml(data.desc);
 
   const go = (delta: number) => {
-    const idx = MEMBER_ORDER.indexOf(memberId);
+    const idx = content.team.memberOrder.indexOf(memberId);
+    const safeIdx = idx === -1 ? 0 : idx;
     const nextId =
-      MEMBER_ORDER[(idx + delta + MEMBER_ORDER.length) % MEMBER_ORDER.length];
+      content.team.memberOrder[
+        (safeIdx + delta + content.team.memberOrder.length) %
+          content.team.memberOrder.length
+      ];
     openTeamMember(nextId);
   };
 

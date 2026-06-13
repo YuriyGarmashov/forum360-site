@@ -1,6 +1,7 @@
 node_modules/
 dist/
 public/assets/
+storage/
 test-results/
 *.zip
 Thumbs.db

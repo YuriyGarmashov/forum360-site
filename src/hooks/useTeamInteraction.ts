@@ -1,13 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-
-import { members } from "@/data/members";
-
+import { useSiteContent } from "@/context/contentContext";
 import { descToHtml, experienceToHtml } from "@/lib/html";
-
 import { useModal } from "@/context/modalContext";
-
 import { useTouchTeamMode } from "@/hooks/useMediaQuery";
-
 import type { MemberId } from "@/types/member";
 
 
@@ -19,6 +14,8 @@ const TOOLTIP_EXIT_MS = 400;
 export function useTeamInteraction() {
 
   const isTouchTeamMode = useTouchTeamMode();
+  const { content } = useSiteContent();
+  const members = content.team.members;
 
   const { openTeamMember, closeTeamMember, isTeamOpen, state } = useModal();
 
@@ -166,6 +163,7 @@ export function useTeamInteraction() {
       isTeamOpen,
 
       state,
+      members,
 
     ],
 

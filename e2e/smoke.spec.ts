@@ -173,6 +173,18 @@ test("projects modal shows all cases", async ({ page }) => {
   ).toHaveCount(4);
 });
 
+test("admin login opens content editor", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto("/admin");
+  await expect(page.locator(".admin-login")).toBeVisible();
+  await page.locator('input[type="password"]').fill("admin");
+  await page.locator(".admin-login button").click();
+  await expect(page.locator(".admin-topbar")).toContainText("Управление сайтом");
+  await expect(page.locator(".admin-tabs")).toContainText("Общие блоки");
+  await expect(page.locator(".admin-tabs")).toContainText("Команда");
+  await expect(page.locator(".admin-tabs")).toContainText("Кейсы и фото");
+});
+
 test("hero logo fits viewport at 320px", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 568 });
   await page.goto("/");

@@ -1,15 +1,23 @@
 import { useEffect, useRef, useState } from "react";
-import { cases } from "@/data/cases";
-import { useCaseGallery } from "@/hooks/useCaseGallery";
-import { useModal } from "@/context/modalContext";
 import { Modal } from "@/components/ui/Modal";
+import { useSiteContent } from "@/context/contentContext";
+import { useModal } from "@/context/modalContext";
+import { useCaseGallery } from "@/hooks/useCaseGallery";
+import type { CasePhoto } from "@/types/case";
+
+const EMPTY_PHOTOS: CasePhoto[] = [];
 
 export function CaseModal() {
   const { state, closeCase } = useModal();
+  const { content } = useSiteContent();
   const open = state.type === "case";
   const caseId = open ? state.caseId : null;
-  const c = caseId ? cases[caseId] : null;
-  const gallery = useCaseGallery(caseId, c?.title ?? "");
+  const c = caseId ? content.cases.items[caseId] : null;
+  const gallery = useCaseGallery(
+    caseId,
+    c?.title ?? "",
+    caseId ? (content.cases.photos[caseId] ?? EMPTY_PHOTOS) : EMPTY_PHOTOS,
+  );
   const touchStartX = useRef<number | null>(null);
   const [detailOpen, setDetailOpen] = useState(false);
 
@@ -41,6 +49,7 @@ export function CaseModal() {
   const bodyHtml = detailOpen ? c.bodyDetail : c.body;
   const showBody = Boolean(bodyHtml);
   const showDetailToggle = Boolean(c.bodyDetail);
+  const labels = content.cases.modalLabels;
 
   return (
     <Modal
@@ -54,14 +63,12 @@ export function CaseModal() {
         type="button"
         className="modal-close mono"
         data-close-modal
-        aria-label="Закрыть"
+        aria-label={labels.close}
         onClick={closeCase}
       >
         ×
       </button>
-      <div
-        className={`modal-layout${detailOpen ? " is-detail-open" : ""}`}
-      >
+      <div className={`modal-layout${detailOpen ? " is-detail-open" : ""}`}>
         <div className="modal-visual">
           <div
             className={`modal-viewport${gallery.loading ? " is-loading" : ""}`}
@@ -87,7 +94,7 @@ export function CaseModal() {
             <button
               type="button"
               className="modal-nav modal-nav--prev"
-              aria-label="Предыдущее фото"
+              aria-label={labels.previousPhoto}
               onClick={() => gallery.step(-1)}
             >
               ‹
@@ -101,7 +108,7 @@ export function CaseModal() {
             <button
               type="button"
               className="modal-nav modal-nav--next"
-              aria-label="Следующее фото"
+              aria-label={labels.nextPhoto}
               onClick={() => gallery.step(1)}
             >
               ›
@@ -109,12 +116,10 @@ export function CaseModal() {
           </div>
           <div className="modal-gallery-toolbar mono">
             <span>{gallery.countLabel}</span>
-            <span className="modal-gallery-hint">← → · свайп</span>
+            <span className="modal-gallery-hint">{labels.galleryHint}</span>
           </div>
         </div>
-        <div
-          className={`modal-aside${detailOpen ? " is-detail-open" : ""}`}
-        >
+        <div className={`modal-aside${detailOpen ? " is-detail-open" : ""}`}>
           <div className="modal-aside-head">
             <h2 className="modal-title" id="modalTitle">
               {c.title}
@@ -135,7 +140,7 @@ export function CaseModal() {
                 aria-expanded={detailOpen}
                 onClick={() => setDetailOpen((v) => !v)}
               >
-                {detailOpen ? "Краткое описание" : "Подробнее о проекте"}
+                {detailOpen ? labels.detailClose : labels.detailOpen}
               </button>
             ) : null}
             <a
@@ -144,7 +149,7 @@ export function CaseModal() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Открыть в ЕИС
+              {labels.openEis}
             </a>
           </div>
         </div>

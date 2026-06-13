@@ -1,23 +1,23 @@
 import { TeamCircle } from "@/components/team/TeamCircle";
 import { TeamSectionDecor } from "@/components/team/TeamSectionDecor";
 import { Reveal } from "@/components/ui/Reveal";
+import { useSiteContent } from "@/context/contentContext";
 
 export function TeamSection() {
+  const { content } = useSiteContent();
+
   return (
     <section className="section team-section" id="team" aria-labelledby="team-title">
       <TeamSectionDecor />
       <div className="section-head">
-        <span className="section-num mono">02</span>
+        <span className="section-num mono">{content.team.sectionNumber}</span>
         <h2 className="section-title" id="team-title">
-          Руководящий состав
+          {content.team.title}
         </h2>
-        <p className="team-tagline">
-          Специалисты, которые знают: чтобы качественно работать, нужно
-          качественно отдыхать.
-        </p>
+        <p className="team-tagline">{content.team.tagline}</p>
       </div>
       <p className="section-sub section-sub--mobile mono">
-        Нажмите на сектор круга — карточка закрепится ниже
+        {content.team.mobileHint}
       </p>
       <Reveal className="team-wrapper">
         <TeamCircle />

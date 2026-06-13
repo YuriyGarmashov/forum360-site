@@ -1,7 +1,14 @@
-export function HeroProcessArt() {
+import type { HeroContent } from "@/types/content";
+
+type HeroProcessArtProps = {
+  content: HeroContent;
+};
+
+export function HeroProcessArt({ content }: HeroProcessArtProps) {
   const stroke = "#eaeaea";
   const fill = "rgba(34, 36, 38, 0.58)";
   const strokeSoft = "rgba(234, 234, 234, 0.26)";
+  const stages = content.contractStages.slice(0, 3);
 
   return (
     <svg
@@ -62,7 +69,7 @@ export function HeroProcessArt() {
         <line x1="392" y1="98" x2="402" y2="98" stroke={stroke} strokeWidth="1" opacity="0.7" />
         <line x1="392" y1="104" x2="402" y2="104" stroke={stroke} strokeWidth="1" opacity="0.7" />
         <text x="416" y="104" fill={stroke} fontSize="11" fontFamily="var(--font-mono)" fontWeight="600" letterSpacing="0.08em" opacity="0.78">
-          ДОКУМЕНТАЦИЯ
+          {content.documentTitle.toUpperCase()}
         </text>
         <line x1="388" y1="128" x2="544" y2="128" stroke={stroke} strokeWidth="1" opacity="0.2" />
         <line x1="388" y1="140" x2="520" y2="140" stroke={stroke} strokeWidth="1" opacity="0.16" />
@@ -72,29 +79,32 @@ export function HeroProcessArt() {
       <g className="hero-process__float hero-process__float--2" filter="url(#heroCardGlow)">
         <rect x="88" y="188" width="248" height="196" rx="6" fill={fill} stroke={strokeSoft} strokeWidth="1" />
         <text x="108" y="222" fill={stroke} fontSize="12" fontFamily="var(--font-mono)" fontWeight="700" letterSpacing="0.1em" opacity="0.84">
-          ЭТАПЫ ПРОЕКТА
+          {content.processTitle.toUpperCase()}
         </text>
-        <text x="108" y="258" fill={stroke} fontSize="9" opacity="0.82">
-          Подписание контракта
-        </text>
-        <text x="108" y="278" fill={stroke} fontSize="9" opacity="0.78">
-          Реализация
-        </text>
-        <text x="108" y="298" fill={stroke} fontSize="9" opacity="0.74">
-          Загрузка УПД
-        </text>
+        {content.processSteps.slice(0, 3).map((step, index) => (
+          <text
+            key={step}
+            x="108"
+            y={258 + index * 20}
+            fill={stroke}
+            fontSize="9"
+            opacity={0.82 - index * 0.04}
+          >
+            {step}
+          </text>
+        ))}
         <line x1="108" y1="328" x2="316" y2="328" stroke={stroke} strokeWidth="1" opacity="0.18" />
         <text x="108" y="350" fill={stroke} fontSize="8" fontFamily="var(--font-mono)" opacity="0.55" letterSpacing="0.06em">
-          ЗАКРЫТО
+          {content.metricLeftLabel.toUpperCase()}
         </text>
         <text x="108" y="372" fill={stroke} fontSize="16" fontFamily="var(--font-mono)" fontWeight="700">
-          128
+          {content.metricLeftValue}
         </text>
         <text x="242" y="350" fill={stroke} fontSize="8" fontFamily="var(--font-mono)" opacity="0.62" letterSpacing="0.06em">
-          В РАБОТЕ
+          {content.metricRightLabel.toUpperCase()}
         </text>
         <text x="242" y="372" fill={stroke} fontSize="16" fontFamily="var(--font-mono)" fontWeight="700">
-          23
+          {content.metricRightValue}
         </text>
       </g>
 
@@ -110,23 +120,28 @@ export function HeroProcessArt() {
       <g className="hero-process__float hero-process__float--4" filter="url(#heroCardGlow)">
         <rect x="168" y="404" width="300" height="132" rx="6" fill={fill} stroke={strokeSoft} strokeWidth="1" />
         <text x="188" y="432" fill={stroke} fontSize="11" fontFamily="var(--font-mono)" fontWeight="600" letterSpacing="0.08em" opacity="0.78">
-          ИСПОЛНЕНИЕ КОНТРАКТА
+          {content.contractTitle.toUpperCase()}
         </text>
-        <text x="188" y="456" fill={stroke} fontSize="9" fontFamily="var(--font-mono)" opacity="0.7" letterSpacing="0.04em">
-          Поставка
-        </text>
-        <text x="268" y="456" fill={stroke} fontSize="9" fontFamily="var(--font-mono)" opacity="0.7" letterSpacing="0.04em">
-          Отчётность
-        </text>
-        <text x="360" y="456" fill={stroke} fontSize="9" fontFamily="var(--font-mono)" opacity="0.7" letterSpacing="0.04em">
-          Закрытие
-        </text>
+        {stages.map((stage, index) => (
+          <text
+            key={stage}
+            x={188 + index * 80 + (index === 2 ? 12 : 0)}
+            y="456"
+            fill={stroke}
+            fontSize="9"
+            fontFamily="var(--font-mono)"
+            opacity="0.7"
+            letterSpacing="0.04em"
+          >
+            {stage}
+          </text>
+        ))}
         <rect x="188" y="468" width="260" height="4" rx="2" fill="rgba(234,234,234,0.12)" />
         <rect x="188" y="468" width="148" height="4" rx="2" fill="rgba(234,234,234,0.45)" />
         <circle cx="336" cy="470" r="5" fill={stroke} opacity="0.9" />
         <rect x="188" y="494" width="88" height="24" rx="3" fill="none" stroke={strokeSoft} strokeWidth="1" />
         <text x="232" y="510" fill={stroke} fontSize="8" fontFamily="var(--font-mono)" textAnchor="middle" letterSpacing="0.1em">
-          В РАБОТЕ
+          {content.contractStatus.toUpperCase()}
         </text>
       </g>
 
@@ -143,7 +158,7 @@ export function HeroProcessArt() {
           textAnchor="middle"
           letterSpacing="0.04em"
         >
-          44-ФЗ
+          {content.lawLabel}
         </text>
       </g>
     </svg>

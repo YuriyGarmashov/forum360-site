@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Reveal } from "@/components/ui/Reveal";
+import { useSiteContent } from "@/context/contentContext";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 function formatMoscowTime(): string {
@@ -13,6 +14,7 @@ function formatMoscowTime(): string {
 
 export function FooterSection() {
   const isMobileContact = useMediaQuery("(max-width: 880px)");
+  const { content } = useSiteContent();
   const [time, setTime] = useState(formatMoscowTime);
 
   useEffect(() => {
@@ -24,43 +26,38 @@ export function FooterSection() {
     <footer className="site-footer" id="contacts">
       <Reveal className="footer-main" as="div">
         <div className="footer-col">
-          <h3 className="footer-brand">ФОРУМ 360</h3>
-          <p className="footer-desc">
-            Организация мероприятий по всей России в рамках 44-ФЗ
-          </p>
+          <h3 className="footer-brand">{content.footer.brand}</h3>
+          <p className="footer-desc">{content.footer.description}</p>
           <div className="footer-cta">
             {isMobileContact ? (
               <a
                 className="footer-contact footer-contact--link mono"
-                href="tel:+79180868600"
+                href={`tel:${content.footer.phone.replace(/[^\d+]/g, "")}`}
               >
-                +7 918 086 86 00
+                {content.footer.phone}
               </a>
             ) : (
-              <span className="footer-contact mono">+7 918 086 86 00</span>
+              <span className="footer-contact mono">{content.footer.phone}</span>
             )}
             {isMobileContact ? (
               <a
                 className="footer-contact footer-contact--link mono"
-                href="mailto:forum.360@yandex.ru"
+                href={`mailto:${content.footer.email}`}
               >
-                forum.360@yandex.ru
+                {content.footer.email}
               </a>
             ) : (
-              <span className="footer-contact mono">forum.360@yandex.ru</span>
+              <span className="footer-contact mono">{content.footer.email}</span>
             )}
           </div>
         </div>
         <div className="footer-col footer-col--mono">
-          <h4 className="mono footer-heading">// SYSTEM.INFO</h4>
-          <p>ООО «Форум 360»</p>
-          <p>ИНН 2310241828</p>
+          <h4 className="mono footer-heading">{content.footer.systemHeading}</h4>
+          <p>{content.footer.legalName}</p>
+          <p>{content.footer.inn}</p>
+          <p>{content.footer.address}</p>
           <p>
-            350002, Краснодарский край, г. Краснодар, ул. Северная, д. 490,
-            помещ. 12/1
-          </p>
-          <p>
-            <a href="mailto:forum.360@yandex.ru">forum.360@yandex.ru</a>
+            <a href={`mailto:${content.footer.email}`}>{content.footer.email}</a>
           </p>
         </div>
         <div className="footer-col footer-deco mono" aria-hidden="true">
@@ -78,17 +75,17 @@ export function FooterSection() {
                 opacity="0.5"
               />
             </svg>
-            <span className="footer-chart-cap">METRICS / DELIVERY</span>
+            <span className="footer-chart-cap">{content.footer.chartCaption}</span>
           </div>
         </div>
       </Reveal>
       <Reveal className="footer-strip" as="div">
         <span className="footer-status">
           <span className="footer-dot" />
-          SYSTEM STATUS: ONLINE
+          {content.footer.statusLabel}
         </span>
         <span id="footer-time">{time}</span>
-        <span>SECURE CONNECTION</span>
+        <span>{content.footer.secureLabel}</span>
       </Reveal>
     </footer>
   );
