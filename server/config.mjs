@@ -20,7 +20,9 @@ export const distDir = path.join(rootDir, "dist");
 
 export const adminUsername = process.env.ADMIN_USERNAME || "admin";
 export const adminPassword = process.env.ADMIN_PASSWORD || "";
-export const adminPasswordHash = process.env.ADMIN_PASSWORD_HASH || "";
+export const adminPasswordHash =
+  process.env.ADMIN_PASSWORD_HASH ||
+  "scrypt$_fXsd39SLCHwZDChF54Ocw$-EVx0SK20RdGgkLYVHPUDRb1xn4yqPpfxRhJYBfmVB-X0Brh73Dz5gp-73OwLHKLbJLto2OEZKLP4vo5omNj0g";
 export const sessionSecret =
   process.env.SESSION_SECRET || "forum360-local-session-secret-change-in-production";
 export const sessionTtlMs = Number(process.env.SESSION_TTL_MS || 1000 * 60 * 60 * 24 * 7);

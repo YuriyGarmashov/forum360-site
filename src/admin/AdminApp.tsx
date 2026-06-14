@@ -24,6 +24,7 @@ import {
   slugify,
   splitParagraphs,
 } from "@/admin/adminUtils";
+import { applyRussianTypography } from "@/content/typography";
 import { mergeContent } from "@/context/contentContext";
 import type { Case, CaseId, CasePhoto } from "@/types/case";
 import type { SiteContent } from "@/types/content";
@@ -107,7 +108,7 @@ function LoginScreen({ onLogin }: { onLogin: (session: AdminSession) => void }) 
         <p className="admin-kicker mono">FORUM 360 CMS</p>
         <h1>Вход в админку</h1>
         <p className="admin-muted admin-login-copy">
-          Локально, если пароль не задан в env, используется admin / admin.
+          Логин администратора: admin. Пароль хранится на сервере в защищённом виде.
         </p>
         <label className="admin-field">
           <span>Логин</span>
@@ -168,7 +169,7 @@ function AdminWorkspace({
     setStatusKind("saving");
     setMessage("Сохраняем...");
     try {
-      const savedContent = mergeContent(await saveAdminContent(draft));
+      const savedContent = mergeContent(await saveAdminContent(applyRussianTypography(draft)));
       setSaved(savedContent);
       setDraft(savedContent);
       setStatusKind("success");

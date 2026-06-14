@@ -7,6 +7,7 @@ import {
   type ReactNode,
 } from "react";
 import { defaultContent } from "@/content/defaultContent";
+import { applyRussianTypography } from "@/content/typography";
 import type { SiteContent } from "@/types/content";
 
 type ContentContextValue = {
@@ -24,7 +25,7 @@ function isObject(value: unknown): value is Record<string, unknown> {
 export function mergeContent(input: unknown): SiteContent {
   if (!isObject(input)) return defaultContent;
   const next = input as Partial<SiteContent>;
-  return {
+  return applyRussianTypography({
     ...defaultContent,
     ...next,
     hero: { ...defaultContent.hero, ...next.hero },
@@ -60,7 +61,7 @@ export function mergeContent(input: unknown): SiteContent {
       caseOrder: next.cases?.caseOrder ?? defaultContent.cases.caseOrder,
     },
     footer: { ...defaultContent.footer, ...next.footer },
-  };
+  });
 }
 
 export function ContentProvider({ children }: { children: ReactNode }) {

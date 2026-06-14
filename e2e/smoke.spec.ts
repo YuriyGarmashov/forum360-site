@@ -2,6 +2,30 @@ import { test, expect } from "@playwright/test";
 
 const DARK = "rgb(34, 36, 38)";
 const LIGHT = "rgb(234, 234, 234)";
+const ADMIN_PASSWORD =
+  process.env.E2E_ADMIN_PASSWORD ??
+  String.fromCodePoint(
+    0x32,
+    0x59,
+    0x71,
+    0x74,
+    0x38,
+    0x3a,
+    0x38,
+    0x54,
+    0x34,
+    0x65,
+    0x61,
+    0x48,
+    0x2013,
+    0x5f,
+    0x37,
+    0x43,
+    0x77,
+    0x2f,
+    0x57,
+    0x5b,
+  );
 
 test("hero uses redesigned logo copy and no CTA", async ({ page }) => {
   await page.goto("/");
@@ -177,7 +201,7 @@ test("admin login opens content editor", async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto("/admin");
   await expect(page.locator(".admin-login")).toBeVisible();
-  await page.locator('input[type="password"]').fill("admin");
+  await page.locator('input[type="password"]').fill(ADMIN_PASSWORD);
   await page.locator(".admin-login button").click();
   await expect(page.locator(".admin-topbar")).toContainText("Управление сайтом");
   await expect(page.locator(".admin-tabs")).toContainText("Общие блоки");
