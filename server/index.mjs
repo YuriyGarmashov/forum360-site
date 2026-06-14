@@ -44,6 +44,10 @@ fs.mkdirSync(uploadsDir, { recursive: true });
 cleanupSessions();
 
 app.disable("x-powered-by");
+app.use((_req, res, next) => {
+  res.setHeader("X-Robots-Tag", "noindex, nofollow, noarchive, nosnippet, noimageindex");
+  next();
+});
 app.use(express.json({ limit: "4mb" }));
 app.use("/uploads", express.static(uploadsDir, { maxAge: "7d" }));
 
